@@ -10,4 +10,4 @@ When a *user* **clicks** a *tile*, one of two things happens.
 When the *user* is confident that all *tiles* not containing *mines* have been **clicked**, the *user* **clicks** a *Validate* button (often portrayed as a smiley-face icon) that **checks** the **clicked** *tiles*: 
 
 + if the *user* is correct, the *game* ends in *victory*
-+ if not, the game ends in *failure*.
++ if not, the *game* ends in *failure*.
