@@ -1,14 +1,16 @@
-var board = require("../lib/board.js");
- 
 describe('After calling newGame()', function () {
-	  
+
+	var board = require("../lib/board.js");
+	var builder = require("../lib/builder.js");
+
 	describe('on a 10x10 board with ten mines', function () {
+		var newBoard = new board(10, 10, 10);
+		var boardBuilder = new builder(newBoard);
 			 
 		describe('the borders will be', function () {
-			var newBoard = new board(10, 10, 10);
 
 			beforeEach(function() {		
-				newBoard.newGame();
+				boardBuilder.newGame();
 			});  
 
 			it('the 1st row', function () {  
@@ -35,13 +37,11 @@ describe('After calling newGame()', function () {
 				}
 			});
 		});
-
-
-		describe('the mines will', function () {
-			var newBoard = new board(10, 10, 10);
+ 
+		describe('the mines will', function () { 
 			
 			beforeEach(function() {
-				newBoard.newGame();
+				boardBuilder.newGame();
 			});
 
 			it('number ten', function () {  
@@ -79,8 +79,7 @@ describe('After calling newGame()', function () {
 				if(!newBoard.tiles[column][row].isBorder && !newBoard.tiles[column][row].isMine) {
 					expect(newBoard.tiles[column][row].value).toBeGreaterThan(0);
 				}
-			}
-
+			} 
 		});	
 	});	
 });

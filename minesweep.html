@@ -3,33 +3,22 @@
 		<title>Minesweeper</title>
 		<script type="text/javascript" src="lib/knockout-2.1.0.js" ></script>
 		<script type="text/javascript" src="lib/board.js" ></script>
-	    <style type="text/css">
-	      table {
-	       border: 0;
-	       padding: 0; 
-	       border-spacing: 0;
-	       border-collapse: collapse;
-	      }
-	      td {padding: 0}
-	      td div {
-	      	height: 20px;
-	      	width: 20px;
-	      	text-align: center;
-	      }
-	      td div.border {
-	      	background-color: black;
-	      }
-	    </style>
+		<script type="text/javascript" src="lib/builder.js" ></script>
+		<script type="text/javascript" src="lib/boardBuilder.js" ></script>
+		<script type="text/javascript" src="lib/convertBoardToKo.js" ></script>
+
+		<link rel="stylesheet" href="public/css/minesweep.css" type="text/css">
 	</head>
 	<body>
 		<div id="divMinesweepBoard">
 			<table cellpadding="0" cellspacing="0" >
 				<tbody data-bind="foreach: tiles">
 					<tr data-bind="foreach: $data">
-						<td>
+						<td data-bind="click: click">
 							<div data-bind="visible: isBorder" class="border">.</div>
-							<div data-bind="visible: isMine">x</div>
-							<div data-bind="visible: !isMine && !isBorder, text: value"></div>
+							<img src="public/img/bombdeath.gif" data-bind="visible: showMine" />
+							<div data-bind="visible: showValue, text: value"></div>
+							<img src="public/img/blank.gif" data-bind="visible: isBlank" />
 						</td>
 					</tr>
 				</tbody>
@@ -37,9 +26,9 @@
 		</div>
 	</body>
 	<script type="text/javascript">
-		var board = new window.minesweep.board(10, 10, 10);
-		board.newGame();
+		var board = window.minesweep.boardBuilder(8, 8, 10); 
+		var koBoard = window.minesweep.convertBoardToKo(board);
 
-		ko.applyBindings(board, document.getElementById('divMinesweepBoard'));
+		ko.applyBindings(koBoard, document.getElementById('divMinesweepBoard'));
 	</script>
 </html>
