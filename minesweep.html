@@ -1,12 +1,6 @@
 <html>
 	<head>
 		<title>Minesweeper</title>
-		<script type="text/javascript" src="lib/knockout-2.1.0.js" ></script>
-		<script type="text/javascript" src="lib/board.js" ></script>
-		<script type="text/javascript" src="lib/builder.js" ></script>
-		<script type="text/javascript" src="lib/boardBuilder.js" ></script>
-		<script type="text/javascript" src="lib/convertBoardToKo.js" ></script>
-
 		<link rel="stylesheet" href="public/css/minesweep.css" type="text/css">
 	</head>
 	<body>
@@ -29,16 +23,23 @@
 					<tr data-bind="foreach: $data">
 						<td data-bind="click: click, event: {contextmenu: tag}">
 							<div class="border" data-bind="visible: isBorder"></div>
-							<img src="public/img/bombdeath.gif" data-bind="visible: showMine" width="16px" height="16px" alt="Da bomb" title="Da bomb" />
-							<img src="public/img/bombflagged.gif" data-bind="visible: isTagged" width="16px" height="16px" alt="Could Be Bomb" title="Could Be Bomb" />
+							<img src="public/img/bombdeath.gif" data-bind="visible: showMine" width="16px" height="16px" alt="a bomb" />
+							<img src="public/img/bombflagged.gif" data-bind="visible: isTagged" width="16px" height="16px" alt="Could Be Bomb" />
 							<div class="value" data-bind="visible: showValue, text: value, style: { color: getValueColor }"></div>
-							<img src="public/img/blank.gif" data-bind="visible: isBlank" width="16px" height="16px" alt="I'm not telling" title="I'm not telling" />
+							<img src="public/img/blank.gif" data-bind="visible: isBlank" width="16px" height="16px" alt="blank tile" />
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</body>
+
+	<script type="text/javascript" src="lib/knockout-2.1.0.js" ></script>
+	<script type="text/javascript" src="lib/board.js" ></script>
+	<script type="text/javascript" src="lib/builder.js" ></script>
+	<script type="text/javascript" src="lib/boardBuilder.js" ></script>
+	<script type="text/javascript" src="lib/convertBoardToKo.js" ></script>
+
 	<script type="text/javascript">
 		var board = window.minesweep.boardBuilder(8, 8, 10); 
 		var koBoard = window.minesweep.convertBoardToKo(board);
