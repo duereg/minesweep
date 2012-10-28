@@ -31,7 +31,7 @@
 							<div class="border" data-bind="visible: isBorder"></div>
 							<img src="public/img/bombdeath.gif" data-bind="visible: showMine" width="16px" height="16px" alt="Da bomb" title="Da bomb" />
 							<img src="public/img/bombflagged.gif" data-bind="visible: isTagged" width="16px" height="16px" alt="Could Be Bomb" title="Could Be Bomb" />
-							<div class="value" data-bind="visible: showValue, text: value"></div>
+							<div class="value" data-bind="visible: showValue, text: value, style: { color: getValueColor }"></div>
 							<img src="public/img/blank.gif" data-bind="visible: isBlank" width="16px" height="16px" alt="I'm not telling" title="I'm not telling" />
 						</td>
 					</tr>
