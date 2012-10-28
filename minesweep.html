@@ -10,15 +10,28 @@
 		<link rel="stylesheet" href="public/css/minesweep.css" type="text/css">
 	</head>
 	<body>
+		<div id="divGameChooser">
+			<div>
+				<label for="txtColumns">Number of Columns? </label>
+				<input id="txtColumns" name="txtColumns" type="number" data-bind="value: columns" />
+			</div><div>
+				<label for="txtRows">Number of Rows? </label>
+				<input id="txtRows" name="txtRows" type="number" data-bind="value: rows" />
+			</div><div>
+				<label for="txtBombs">Number of Bombs? </label>
+				<input id="txtBombs" name="txtBombs" type="number" data-bind="value: numMines" />
+			</div>
+			<a href="#" data-bind="click: updateBoard">Update Board</a>
+		</div>
 		<div id="divMinesweepBoard">
-			<table cellpadding="0" cellspacing="0" >
+			<table cellpadding="0" cellspacing="0" class="minesweep" >
 				<tbody data-bind="foreach: tiles">
 					<tr data-bind="foreach: $data">
 						<td data-bind="click: click">
-							<div data-bind="visible: isBorder" class="border">.</div>
-							<img src="public/img/bombdeath.gif" data-bind="visible: showMine" />
-							<div data-bind="visible: showValue, text: value"></div>
-							<img src="public/img/blank.gif" data-bind="visible: isBlank" />
+							<div class="border" data-bind="visible: isBorder"></div>
+							<img src="public/img/bombdeath.gif" data-bind="visible: showMine" width="16px" height="16px" alt="Da bomb" title="Da bomb" />
+							<div class="value" data-bind="visible: showValue, text: value"></div>
+							<img src="public/img/blank.gif" data-bind="visible: isBlank" width="16px" height="16px" alt="I'm not telling" title="I'm not telling" />
 						</td>
 					</tr>
 				</tbody>
@@ -26,9 +39,9 @@
 		</div>
 	</body>
 	<script type="text/javascript">
-		var board = window.minesweep.boardBuilder(8, 8, 10); 
+		var board = window.minesweep.boardBuilder(10, 10, 10); 
 		var koBoard = window.minesweep.convertBoardToKo(board);
 
-		ko.applyBindings(koBoard, document.getElementById('divMinesweepBoard'));
+		ko.applyBindings(koBoard); //, document.getElementById('divMinesweepBoard')
 	</script>
 </html>

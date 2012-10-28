@@ -1,14 +1,27 @@
-table {
+
+#divGameChooser label {
+	width: 150px;
+	text-align: right;
+}
+
+table.minesweep {
 	border: 0;
 	padding: 0; 
 	border-spacing: 0;
 	border-collapse: collapse;
 }
 td div {
-	height: 20px;
-	width: 20px;
 	text-align: center;
 }
 td div.border {
-	background-color: black;
+	/*background-color: black;*/
+	height: 5px;
+	width: 5px;
+}
+td div.value { 
+	font-size: 12px;
+	font-weight: bold;
+	border: 1px solid silver;
+	height: 14px;
+	width: 14px;
 }
