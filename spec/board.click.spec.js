@@ -5,19 +5,18 @@
 // 		var board = require("../lib/board.js");
 // 		var builder = require("../lib/builder.js");
 
-// 		var newBoard = new board(10, 10, 10);
-// 		var boardBuilder = new builder(newBoard);
+// 		var newBoard = new board(10, 10, 10); 
 
 // 		beforeEach(function() {
 
-// 			boardBuilder.createTiles();
-// 			boardBuilder.setupBoard(); //Setup board but do not add mines
+// 			builder.createTiles(newBoard);
+// 			builder.setupBoard(newBoard); //Setup board but do not add mines
 // 		});
 
 // 		it('if you click on a mine, the failure event will be called.', function() {
 // 			spyOn(newBoard, 'failure')
 
-// 			boardBuilder.addMine(5, 5);
+// 			builder.addMine(newBoard, 5, 5);
 // 			newBoard.click(5, 5);
 
 // 			expect(newBoard.failure).toHaveBeenCalled();

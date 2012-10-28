@@ -21,7 +21,8 @@ td div.border {
 td div.value { 
 	font-size: 12px;
 	font-weight: bold;
-	border: 1px solid silver;
+	border: 1px solid white;
 	height: 14px;
 	width: 14px;
+	background-color: silver;
 }

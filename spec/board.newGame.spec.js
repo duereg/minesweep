@@ -4,13 +4,12 @@ describe('After calling newGame()', function () {
 	var builder = require("../lib/builder.js");
 
 	describe('on a 10x10 board with ten mines', function () {
-		var newBoard = new board(10, 10, 10);
-		var boardBuilder = new builder(newBoard);
+		var newBoard = new board(10, 10, 10); 
 			 
 		describe('the borders will be', function () {
 
 			beforeEach(function() {		
-				boardBuilder.newGame();
+				builder.newGame(newBoard);
 			});  
 
 			it('the 1st row', function () {  
@@ -41,7 +40,7 @@ describe('After calling newGame()', function () {
 		describe('the mines will', function () { 
 			
 			beforeEach(function() {
-				boardBuilder.newGame();
+				builder.newGame(newBoard);
 			});
 
 			it('number ten', function () {  

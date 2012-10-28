@@ -3,11 +3,10 @@ describe('When creating a board', function() {
 	describe('a 10x10 board with ten mines', function() {
 		var board = require("../lib/board.js");
 		var builder = require("../lib/builder.js");
-		var newBoard = new board(10, 10, 10);
-		var boardBuilder = new builder(newBoard);
+		var newBoard = new board(10, 10, 10); 
 		
 		beforeEach(function() {
-			boardBuilder.createTiles();
+			newBoard.tiles = builder.createTiles(newBoard);
 		});
 
 		it('the board will have 12 tile columns', function() {
