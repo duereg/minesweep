@@ -39,8 +39,8 @@ describe('After calling newGame()', function () {
 
 		describe('the mines will', function () {
 			var newBoard = new board(10, 10, 10);
-
-			beforeEach(function() {		
+			
+			beforeEach(function() {
 				newBoard.newGame();
 			});
 
