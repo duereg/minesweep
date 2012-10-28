@@ -1,7 +1,7 @@
-
-#divGameChooser label {
+label { 
+	display: inline-block;  
 	width: 150px;
-	text-align: right;
+	text-align: right; 
 }
 
 table.minesweep {
