@@ -1,56 +1,80 @@
 <html>
 	<head>
-		<title>Minesweeper</title>
+		<title>
+			Minesweeper
+		</title>
+		<link rel="stylesheet" href="public/css/bootstrap.min.css" type="text/css">
 		<link rel="stylesheet" href="public/css/minesweep.css" type="text/css">
 	</head>
 	<body>
-		<div id="divGameChooser">
-			<div>
-				<label for="txtColumns">Number of Columns? </label>
-				<input id="txtColumns" name="txtColumns" type="number" data-bind="value: columns" />
-			</div><div>
-				<label for="txtRows">Number of Rows? </label>
-				<input id="txtRows" name="txtRows" type="number" data-bind="value: rows" />
-			</div><div>
-				<label for="txtBombs">Number of Bombs? </label>
-				<input id="txtBombs" name="txtBombs" type="number" data-bind="value: numMines" />
+		<div class="container">
+			<div class="row">
+				<div class="span4"> 
+					<form class="form-horizontal">
+					  <legend>Legend</legend>
+					  <div class="control-group">
+					    <label class="control-label" for="txtColumns">Number of Columns</label>
+					    <div class="controls">
+					      <input id="txtColumns" name="txtColumns" type="number" class="input-mini" data-bind="value: columns">
+					    </div>
+					  </div>
+					  <div class="control-group">
+					    <label class="control-label" for="txtRows">Number of Rows</label>
+					    <div class="controls">
+					      <input id="txtRows" name="txtRows" type="number" class="input-mini" data-bind="value: rows">
+					    </div>
+					  </div>
+					  <div class="control-group"> 
+						<label class="control-label" for="txtBombs">Number of Bombs</label> 
+						<div class="controls">
+							<input id="txtBombs" name="txtBombs" type="number" class="input-mini" data-bind="value: numMines"> 
+						</div> 
+					  </div>
+					  <div class="control-group"> 
+						<div class="controls">
+					  	  <button class="btn btn-primary btn-large" data-bind="click: updateBoard">Reset Board</button>  
+					    </div>
+					  </div>
+					</form> 
+					<div id="divFailureNote" data-bind="visible: failure">
+						You did not do so well this time. Maybe next time. <img src="public/img/facedead.gif" alt="You Died">
+					</div> 
+				</div>
+				<div class="span8"> 
+					<legend>Mine Sweeper</legend>
+					<div id="divMinesweepBoard">
+						<table cellpadding="0" cellspacing="0" class="minesweep">
+							<tbody data-bind="foreach: tiles">
+								<tr data-bind="foreach: $data">
+									<td data-bind="click: click, event: {contextmenu: tag}">
+										<div class="border" data-bind="visible: isBorder"></div><img src="public/img/bombdeath.gif" data-bind="visible: showMine" width="16px" height="16px" alt="a bomb"> <img src="public/img/bombflagged.gif" data-bind="visible: isTagged" width="16px" height="16px" alt="Could Be Bomb">
+										<div class="value" data-bind="visible: showValue, text: value, style: { color: getValueColor }"></div><img src="public/img/blank.gif" data-bind="visible: isBlank" width="16px" height="16px" alt="blank tile">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
-			<a href="#" data-bind="click: updateBoard">Update Board</a>
+			<hr>
+			<footer>
+
+			</footer>
 		</div>
-		<div id="divMinesweepBoard">
-			<table cellpadding="0" cellspacing="0" class="minesweep" >
-				<tbody data-bind="foreach: tiles">
-					<tr data-bind="foreach: $data">
-						<td data-bind="click: click, event: {contextmenu: tag}">
-							<div class="border" data-bind="visible: isBorder"></div>
-							<img src="public/img/bombdeath.gif" data-bind="visible: showMine" width="16px" height="16px" alt="a bomb" />
-							<img src="public/img/bombflagged.gif" data-bind="visible: isTagged" width="16px" height="16px" alt="Could Be Bomb" />
-							<div class="value" data-bind="visible: showValue, text: value, style: { color: getValueColor }"></div>
-							<img src="public/img/blank.gif" data-bind="visible: isBlank" width="16px" height="16px" alt="blank tile" />
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div id="divFailureNote" data-bind="visible: failure">
-			You did not do so well this time. Maybe next time. 
-			<img src="public/img/facedead.gif" alt="You Died" /> 
-		</div>
+		<script type="text/javascript" src="public/js/knockout-2.1.0.js"></script>
+		<script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="lib/define.js"></script>
+		<script type="text/javascript" src="lib/require.js"></script>
+		<script type="text/javascript" src="lib/board.js"></script>
+		<script type="text/javascript" src="lib/builder.js"></script>
+		<script type="text/javascript" src="lib/boardBuilder.js"></script>
+		<script type="text/javascript" src="lib/koTile.js"></script>
+		<script type="text/javascript" src="lib/koBoard.js"></script>
+		<script type="text/javascript">
+			var board = window.minesweep.boardBuilder(8, 8, 10); 
+			var koBoard = new window.minesweep.koBoard(board);
+
+			ko.applyBindings(koBoard);  
+		</script>
 	</body>
-
-	<script type="text/javascript" src="lib/knockout-2.1.0.js" ></script>
-	<script type="text/javascript" src="lib/define.js" ></script>
-	<script type="text/javascript" src="lib/require.js" ></script>
-	<script type="text/javascript" src="lib/board.js" ></script>
-	<script type="text/javascript" src="lib/builder.js" ></script>
-	<script type="text/javascript" src="lib/boardBuilder.js" ></script>
-	<script type="text/javascript" src="lib/koTile.js" ></script> 
-	<script type="text/javascript" src="lib/convertBoardToKo.js" ></script>
-
-	<script type="text/javascript">
-		var board = window.minesweep.boardBuilder(8, 8, 10); 
-		var koBoard = window.minesweep.convertBoardToKo(board);
-
-		ko.applyBindings(koBoard);  
-	</script>
 </html>
