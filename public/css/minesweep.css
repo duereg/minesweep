@@ -40,3 +40,9 @@ td div.value {
 	width: 14px;
 	background-color: silver;
 }
+
+div.disabledField {
+	background: #eeeeee;
+	border: 1px solid silver;
+	padding: 2px 5px;
+}

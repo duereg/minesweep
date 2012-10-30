@@ -10,20 +10,7 @@
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container-fluid">
-					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></a><a class="brand" href="#">Mine Sweeper</a>
-					<div class="nav-collapse collapse"> 
-<!-- 						<ul class="nav">
-							<li class="active">
-								<a href="#">Home</a>
-							</li>
-							<li>
-								<a href="#about">About</a>
-							</li>
-							<li>
-								<a href="#contact">Contact</a>
-							</li>
-						</ul> -->
-					</div>
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></a><a class="brand" href="#">Mine Sweeper</a> 
 				</div>
 			</div>
 		</div>
@@ -32,9 +19,17 @@
 				<div class="span4">
 					<div id="divControls" class="form-horizontal controls">
 						<div class="control-group">
-							<label class="control-label" for="spnMinesLeft">Mines Left</label>
+							<label class="control-label" for="divMinesTagged">Mines Tagged</label>
 							<div class="controls">
-								<span id="spnMinesLeft" name="spnMinesLeft" class="input-small" data-bind="text: minesLeft">
+								<div id="divMinesTagged" name="divMinesTagged" class="disabledField input-mini" data-bind="text: minesTagged">
+								</div>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="divMinesLeft">Tiles Left</label>
+							<div class="controls">
+								<div id="divMinesLeft" name="divMinesLeft" class="disabledField input-mini" data-bind="text: tilesLeft">
+								</div>
 							</div>
 						</div>
 						<div class="control-group">
@@ -56,12 +51,13 @@
 							</div>
 						</div>
 						<div class="control-group center"> 
-							<button class="btn btn-primary" data-bind="click: updateBoard">New Game</button> 
+							<button class="btn btn-primary" data-bind="click: resetBoard">New Game</button> 
+							<button class="btn disabled" data-bind="click: validateGame, css: {disabled: !canValidate(), 'btn-warning': canValidate }">Validate</button>
 						</div>
 					</div>
 				</div>
 				<div class="span8">
-					<div id="divMinesweepBoard board">
+					<div id="divMinesweepBoard" class="center">
 						<table cellpadding="0" cellspacing="0" class="minesweep">
 							<tbody data-bind="foreach: tiles">
 								<tr data-bind="foreach: $data">
@@ -74,26 +70,20 @@
 										<img src="public/img/GreenTile.gif" data-bind="visible: isBlank() && isHighlighted(), event: {mouseover: highlight, mouseout: blankify}" width="16px" height="16px" alt="highlighted tile" >
 									</td>
 								</tr>
-							</tbody>
-							<tfoot>
-								<tr>
-									<td data-bind="attr: { colspan: tiles() && tiles()[0] && tiles()[0].length}">
-										<div class="control-group">
-											<div class="controls">
-												<button class="btn btn-warning" data-bind="click: validateGame">Validate</button>
-											</div>
-										</div>
-									</td>
-								</tr>
-							</tfoot>
+							</tbody> 
 						</table>
 					</div>
 				</div>
-			</div>
+			</div> 
 			<hr>
 			<footer>
 				<div class="alert alert-error" data-bind="visible: failure">
-					You did not do so well this time. Maybe next time. <button class="btn btn-danger" data-bind="click: updateBoard">New Game</button>
+					You did not do so well this time. Maybe next time. 
+					<button class="btn btn-danger" data-bind="click: resetBoard">New Game</button>
+				</div>
+				<div class="alert alert-success" data-bind="visible: success">
+					Congratulations! You won! 
+					<button class="btn btn-success" data-bind="click: resetBoard">New Game</button>
 				</div>
 			</footer>
 		</div>
