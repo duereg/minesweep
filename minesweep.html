@@ -64,24 +64,26 @@
 								<tr data-bind="foreach: $data">
 									<td data-bind="click: click, event: {contextmenu: tag}">
 										<div class="border" data-bind="visible: isBorder"></div>
+										<div class="value" data-bind="visible: showValue, text: value, style: { color: getValueColor }"></div>
 										<img src="public/img/bombdeath.gif" data-bind="visible: showMine" width="16px" height="16px" alt="a bomb"> 
 										<img src="public/img/bombflagged.gif" data-bind="visible: isTagged" width="16px" height="16px" alt="Could Be Bomb">
-										<div class="value" data-bind="visible: showValue, text: value, style: { color: getValueColor }"></div>
 										<img src="public/img/blank.gif" data-bind="visible: isBlank() && !isHighlighted(), event: {mouseover: highlight, mouseout: blankify}" width="16px" height="16px" alt="blank tile" >
 										<img src="public/img/GreenTile.gif" data-bind="visible: isBlank() && isHighlighted(), event: {mouseover: highlight, mouseout: blankify}" width="16px" height="16px" alt="highlighted tile" >
 									</td>
 								</tr>
 							</tbody>
+							<tfoot>
+								<tr>
+									<td data-bind="attr: { colspan: tiles() && tiles()[0] && tiles()[0].length}">
+										<div class="control-group">
+											<div class="controls">
+												<button class="btn btn-warning" data-bind="click: validateGame">Validate</button>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tfoot>
 						</table>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="span4">
-					<div class="control-group">
-						<div class="controls">
-							<button class="btn btn-warning" data-bind="click: validateGame">Validate</button>
-						</div>
 					</div>
 				</div>
 			</div>
