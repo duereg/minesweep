@@ -38,7 +38,7 @@ describe('When creating a board from the boardBuilder', function() {
 
         expect(board.rows).toEqual(10);
     });
-    
+
     it('numMines will be defined', function() {
         var board = boardBuilder(10, 10, 10);
 

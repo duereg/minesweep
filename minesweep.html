@@ -32,6 +32,12 @@
 				<div class="span4">
 					<div id="divControls" class="form-horizontal controls">
 						<div class="control-group">
+							<label class="control-label" for="spnMinesLeft">Mines Left</label>
+							<div class="controls">
+								<span id="spnMinesLeft" name="spnMinesLeft" class="input-small" data-bind="text: minesLeft">
+							</div>
+						</div>
+						<div class="control-group">
 							<label class="control-label" for="txtColumns">Number of Columns</label>
 							<div class="controls">
 								<input id="txtColumns" name="txtColumns" type="number" class="input-small" data-bind="value: columns">
@@ -90,16 +96,18 @@
 					You did not do so well this time. Maybe next time. <button class="btn btn-danger" data-bind="click: updateBoard">New Game</button>
 				</div>
 			</footer>
-		</div><script type="text/javascript" src="public/js/knockout-2.1.0.js">
-</script><script type="text/javascript" src="lib/define.js">
-</script><script type="text/javascript" src="lib/require.js">
-</script><script type="text/javascript" src="lib/board.js">
-</script><script type="text/javascript" src="lib/builder.js">
-</script><script type="text/javascript" src="lib/boardBuilder.js">
-</script><script type="text/javascript" src="lib/koTile.js">
-</script><script type="text/javascript" src="lib/koBoard.js">
-</script><script type="text/javascript">
-	var board = window.minesweep.boardBuilder(8, 8, 10); 
+		</div>
+		<script type="text/javascript" src="public/js/knockout-2.1.0.js"></script>
+		<script type="text/javascript" src="public/js/amplify.core.min.js"></script>
+		<script type="text/javascript" src="lib/define.js"></script>
+		<script type="text/javascript" src="lib/require.js"></script>
+		<script type="text/javascript" src="lib/board.js"></script>
+		<script type="text/javascript" src="lib/builder.js"></script>
+		<script type="text/javascript" src="lib/boardBuilder.js"></script>
+		<script type="text/javascript" src="lib/koTile.js"></script>
+		<script type="text/javascript" src="lib/koBoard.js"></script>
+		<script type="text/javascript">
+			var board = window.minesweep.boardBuilder(8, 8, 10);
 			var koBoard = new window.minesweep.koBoard(board);
 
 			ko.applyBindings(koBoard);  
