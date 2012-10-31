@@ -41,12 +41,6 @@ td div.value {
 	background-color: silver;
 }
 
-div.disabledField {
-	background: #eeeeee;
-	border: 1px solid silver;
-	padding: 2px 5px;
-}
-
 div.blank {
 	background-image: url('../img/blank.gif');
 	width: 16px;

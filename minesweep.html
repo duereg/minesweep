@@ -19,40 +19,42 @@
 				<div class="span4">
 					<div id="divControls" class="form-horizontal controls">
 						<div class="control-group">
-							<label class="control-label" for="divMinesTagged">Mines Tagged</label>
+							<label class="control-label" >Mines Tagged</label>
 							<div class="controls">
-								<div id="divMinesTagged" name="divMinesTagged" class="disabledField input-mini" data-bind="text: minesTagged">
-								</div>
+								<span class="input-mini uneditable-input" data-bind="text: minesTagged"></span>
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="divMinesLeft">Tiles Left</label>
+							<label class="control-label" >Tiles Left</label>
 							<div class="controls">
-								<div id="divMinesLeft" name="divMinesLeft" class="disabledField input-mini" data-bind="text: tilesLeft">
-								</div>
+								<span class="input-mini uneditable-input" data-bind="text: tilesLeft"></span> 
 							</div>
 						</div>
-						<div class="control-group">
+						<div class="control-group" data-bind="css: {error: tooFewColumns}">
 							<label class="control-label" for="txtColumns">Number of Columns</label>
 							<div class="controls">
-								<input id="txtColumns" name="txtColumns" type="number" class="input-small" data-bind="value: columns">
+								<input id="txtColumns" name="txtColumns" type="number" class="input-small" data-bind="value: columns" min="1">
+								<span class="help-inline" data-bind="visible: tooFewColumns">You need at least one column.</span>
 							</div>
 						</div>
-						<div class="control-group">
+						<div class="control-group" data-bind="css: {error: tooFewRows}">
 							<label class="control-label" for="txtRows">Number of Rows</label>
 							<div class="controls">
-								<input id="txtRows" name="txtRows" type="number" class="input-small" data-bind="value: rows">
+								<input id="txtRows" name="txtRows" type="number" class="input-small" data-bind="value: rows" min="1">
+								<span class="help-inline" data-bind="visible: tooFewRows">You need at least one row.</span>
 							</div>
 						</div>
-						<div class="control-group">
+						<div class="control-group" data-bind="css: {error: tooManyMines() || tooFewMines()}">
 							<label class="control-label" for="txtBombs">Number of Bombs</label>
 							<div class="controls">
-								<input id="txtBombs" name="txtBombs" type="number" class="input-small" data-bind="value: numMines">
+								<input id="txtBombs" name="txtBombs" type="number" class="input-small" data-bind="value: numMines" min="1">
+								<span class="help-inline" data-bind="visible: tooManyMines">You have more mines than tiles.</span>
+								<span class="help-inline" data-bind="visible: tooFewMines">You need at least one mine.</span>
 							</div>
 						</div>
 						<div class="control-group center"> 
-							<button class="btn btn-primary" data-bind="click: resetBoard">New Game</button> 
-							<button class="btn disabled" data-bind="click: validateGame, css: {disabled: !canValidate(), 'btn-warning': canValidate }">Validate</button>
+							<button class="btn" data-bind="click: resetBoard, enabled: boardIsValid, css: {'btn-primary': boardIsValid, disabled: !boardIsValid()}">New Game</button> 
+							<button class="btn" data-bind="click: validateGame, enabled: canValidate, css: {disabled: !canValidate(), 'btn-warning': canValidate }">Validate</button>
 						</div>
 					</div>
 				</div>
@@ -78,11 +80,11 @@
 			<footer>
 				<div class="alert alert-error" data-bind="visible: failure">
 					You did not do so well this time. Maybe next time. 
-					<button class="btn btn-danger" data-bind="click: resetBoard">New Game</button>
+					<button class="btn" data-bind="click: resetBoard, enabled: boardIsValid, css: {'btn-danger': boardIsValid, disabled: !boardIsValid()}">New Game</button>  
 				</div>
 				<div class="alert alert-success" data-bind="visible: success">
 					Congratulations! You won! 
-					<button class="btn btn-success" data-bind="click: resetBoard">New Game</button>
+					<button class="btn" data-bind="click: resetBoard, enabled: boardIsValid, css: {'btn-success': boardIsValid, disabled: !boardIsValid()}">New Game</button>   
 				</div>
 			</footer>
 		</div>
