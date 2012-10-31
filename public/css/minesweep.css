@@ -46,3 +46,27 @@ div.disabledField {
 	border: 1px solid silver;
 	padding: 2px 5px;
 }
+
+div.blank {
+	background-image: url('../img/blank.gif');
+	width: 16px;
+	height: 16px;
+}
+
+div.blank:hover {
+	background-image: url('../img/GreenTile.gif');
+	width: 16px;
+	height: 16px;
+}
+
+div.mine {
+	background-image: url('../img/bombdeath.gif');
+	width: 16px;
+	height: 16px;
+}
+
+div.flagged {
+	background-image: url('../img/bombflagged.gif');
+	width: 16px;
+	height: 16px;
+}

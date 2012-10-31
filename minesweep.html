@@ -64,10 +64,9 @@
 									<td data-bind="click: click, event: {contextmenu: tag}">
 										<div class="border" data-bind="visible: isBorder"></div>
 										<div class="value" data-bind="visible: showValue, text: value, style: { color: getValueColor }"></div>
-										<img src="public/img/bombdeath.gif" data-bind="visible: showMine" width="16px" height="16px" alt="a bomb"> 
-										<img src="public/img/bombflagged.gif" data-bind="visible: isTagged" width="16px" height="16px" alt="Could Be Bomb">
-										<img src="public/img/blank.gif" data-bind="visible: isBlank() && !isHighlighted(), event: {mouseover: highlight, mouseout: blankify}" width="16px" height="16px" alt="blank tile" >
-										<img src="public/img/GreenTile.gif" data-bind="visible: isBlank() && isHighlighted(), event: {mouseover: highlight, mouseout: blankify}" width="16px" height="16px" alt="highlighted tile" >
+										<div class="mine" data-bind="visible: showMine" ></div>
+										<div class="flagged" data-bind="visible: isTagged" ></div>
+										<div class="blank"  data-bind="visible: isBlank"></div>
 									</td>
 								</tr>
 							</tbody> 
