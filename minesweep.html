@@ -63,12 +63,12 @@
 						<table cellpadding="0" cellspacing="0" class="minesweep">
 							<tbody data-bind="foreach: tiles">
 								<tr data-bind="foreach: $data">
-									<td data-bind="click: click, event: {contextmenu: tag}">
+									<td>
 										<div class="border" data-bind="visible: isBorder"></div>
 										<div class="value" data-bind="visible: showValue, text: value, style: { color: getValueColor }"></div>
 										<div class="mine" data-bind="visible: showMine" ></div>
-										<div class="flagged" data-bind="visible: isTagged" ></div>
-										<div class="blank"  data-bind="visible: isBlank"></div>
+										<div class="flagged" data-bind="visible: isTagged, click: click, event: {contextmenu: tag}" ></div>
+										<div class="blank"  data-bind="visible: isBlank, click: click, event: {contextmenu: tag}" ></div>
 									</td>
 								</tr>
 							</tbody> 
