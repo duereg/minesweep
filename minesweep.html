@@ -16,7 +16,7 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="span4">
+				<div class="span4" id="divControls">
 					<div id="divControls" class="form-horizontal controls">
 						<div class="control-group">
 							<label class="control-label" >Mines Tagged</label>
@@ -77,7 +77,7 @@
 				</div>
 			</div> 
 			<hr>
-			<footer>
+			<footer id="ftMessages">
 				<div class="alert alert-error" data-bind="visible: failure">
 					You did not do so well this time. Maybe next time. 
 					<button class="btn" data-bind="click: resetBoard, enabled: boardIsValid, css: {'btn-danger': boardIsValid, disabled: !boardIsValid()}">New Game</button>  

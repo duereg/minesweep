@@ -26,20 +26,3 @@ describe('When using the builder', function() {
         }); 
     });
 });
-
-describe('testing amplify and ko fakes', function() { 
-    global.ko = { 
-        observable: function() {},
-        observableArray: function() {},
-        computed: function() {} 
-    };
-
-    global.amplify = {
-        subscribe: function() {},
-        publish: function() {}
-    };
-
-    it('when requiring koBoard', function() {
-        var koBoard = require("../lib/koBoard.js");
-    });
-});
