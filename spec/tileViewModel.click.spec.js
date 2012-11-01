@@ -1,19 +1,23 @@
 describe('When you create a tileViewModel', function() { 
-    global.ko = { 
-        observable: function(value) { return function() {return value;}},
-        observableArray: function(value) {return function() {return value;}},
-        computed: function(value) {return function() {return value;}} 
-    };
 
-    global.amplify = {
-        subscribe: function() {},
-        publish: function() {}
-    };
- 
-    var tileViewModel = require("../lib/tileViewModel.js"); 
+    var tileViewModel; 
     var column = 4;
     var row = 6;
 
+    var ko = require("./fake.ko.js");
+    var amplify = require("./fake.amplify.js"); 
+
+    beforeEach(function() {
+        global.ko = ko;
+        global.amplify = amplify;
+        tileViewModel = require("../lib/tileViewModel.js"); 
+    });
+
+    afterEach(function() {
+        delete global.ko;
+        delete global.amplify;
+    });
+ 
     describe('as a Mine', function() { 
         var tile;
 
