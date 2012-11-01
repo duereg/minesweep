@@ -54,7 +54,7 @@
 							</div>
 						</div>
 						<div class="control-group center"> 
-							<button class="btn" data-bind="click: resetBoard, enabled: boardIsValid, css: {'btn-primary': boardIsValid, disabled: !boardIsValid()}">New Game</button> 
+							<button class="btn" data-bind="click: resetBoard, enabled: gameIsValid, css: {'btn-primary': gameIsValid, disabled: !gameIsValid()}">New Game</button> 
 							<button class="btn" data-bind="click: validateGame, enabled: canValidate, css: {disabled: !canValidate(), 'btn-warning': canValidate }">Validate</button>
 						</div>
 					</div>
@@ -66,8 +66,8 @@
 								<tr data-bind="foreach: $data">
 									<td>
 										<div class="border" data-bind="visible: isBorder"></div>
-										<div class="value" data-bind="visible: showValue, text: value, style: { color: getValueColor }"></div>
 										<div class="mine" data-bind="visible: showMine" ></div>
+										<div class="value" data-bind="visible: showValue, text: value, style: { color: getValueColor }"></div>
 										<div class="flagged" data-bind="visible: isTagged, click: click, event: {contextmenu: tag}" ></div>
 										<div class="blank"  data-bind="visible: isBlank, click: click, event: {contextmenu: tag}" ></div>
 									</td>
@@ -81,11 +81,11 @@
 			<footer id="ftMessages">
 				<div class="alert alert-error" data-bind="visible: failure">
 					You did not do so well this time. Maybe next time. 
-					<button class="btn" data-bind="click: resetBoard, enabled: boardIsValid, css: {'btn-danger': boardIsValid, disabled: !boardIsValid()}">New Game</button>  
+					<button class="btn" data-bind="click: resetBoard, enabled: gameIsValid, css: {'btn-danger': gameIsValid, disabled: !gameIsValid()}">New Game</button>  
 				</div>
 				<div class="alert alert-success" data-bind="visible: success">
 					Congratulations! You won! 
-					<button class="btn" data-bind="click: resetBoard, enabled: boardIsValid, css: {'btn-success': boardIsValid, disabled: !boardIsValid()}">New Game</button>   
+					<button class="btn" data-bind="click: resetBoard, enabled: gameIsValid, css: {'btn-success': gameIsValid, disabled: !gameIsValid()}">New Game</button>   
 				</div>
 			</footer>
 		</div>
