@@ -37,7 +37,7 @@ describe('When you create a tileViewModel', function() {
             spyOn(global.amplify, 'publish');
             tile.tag();
 
-            expect(global.amplify.publish).toHaveBeenCalledWith(tileViewModel.tagEvent, column, row);
+            expect(global.amplify.publish).toHaveBeenCalledWith(tileViewModel.tagEvent, tile);
         });
     });
 
@@ -59,7 +59,7 @@ describe('When you create a tileViewModel', function() {
             spyOn(global.amplify, 'publish');
             tile.tag();
 
-            expect(global.amplify.publish).toHaveBeenCalledWith(tileViewModel.tagEvent, column, row);
+            expect(global.amplify.publish).toHaveBeenCalledWith(tileViewModel.tagEvent, tile);
         });
     }); 
 
