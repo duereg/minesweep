@@ -42,7 +42,7 @@
 						<div class="control-group" data-bind="css: {error: tooFewRows() || tooManyRows()}">
 							<label class="control-label" for="txtRows">Number of Rows</label>
 							<div class="controls">
-								<input id="txtRows" name="txtRows" type="number" class="input-small" data-bind="value: rows, attr: {max: maxRows}" min="1" max=32>
+								<input id="txtRows" name="txtRows" type="number" class="input-small" data-bind="value: rows, attr: {max: maxRows}" min="1">
 								<span class="help-inline" data-bind="visible: tooFewRows">You need at least one row.</span>
 								<span class="help-inline" data-bind="visible: tooManyRows">You can have no more than <span data-bind="text: maxRows"></span> rows.</span>
 							</div>
@@ -50,7 +50,7 @@
 						<div class="control-group" data-bind="css: {error: tooManyMines() || tooFewMines()}">
 							<label class="control-label" for="txtBombs">Number of Bombs</label>
 							<div class="controls">
-								<input id="txtBombs" name="txtBombs" type="number" class="input-small" data-bind="value: numMines" min="1">
+								<input id="txtBombs" name="txtBombs" type="number" class="input-small" data-bind="value: numMines, attr: {max: maxMines}" min="1">
 								<span class="help-inline" data-bind="visible: tooManyMines">You have more mines than tiles.</span>
 								<span class="help-inline" data-bind="visible: tooFewMines">You need at least one mine.</span>
 							</div>
