@@ -31,18 +31,20 @@
 								<span class="input-mini uneditable-input" data-bind="text: tilesLeft"></span> 
 							</div>
 						</div>
-						<div class="control-group" data-bind="css: {error: tooFewColumns}">
+						<div class="control-group" data-bind="css: {error: tooFewColumns() || tooManyColumns() }">
 							<label class="control-label" for="txtColumns">Number of Columns</label>
 							<div class="controls">
-								<input id="txtColumns" name="txtColumns" type="number" class="input-small" data-bind="value: columns" min="1">
+								<input id="txtColumns" name="txtColumns" type="number" class="input-small" data-bind="value: columns, attr: {max: maxColumns}" min="1">
 								<span class="help-inline" data-bind="visible: tooFewColumns">You need at least one column.</span>
+								<span class="help-inline" data-bind="visible: tooManyColumns">You can have no more than <span data-bind="text: maxColumns"></span> columns.</span>
 							</div>
 						</div>
-						<div class="control-group" data-bind="css: {error: tooFewRows}">
+						<div class="control-group" data-bind="css: {error: tooFewRows() || tooManyRows()}">
 							<label class="control-label" for="txtRows">Number of Rows</label>
 							<div class="controls">
-								<input id="txtRows" name="txtRows" type="number" class="input-small" data-bind="value: rows" min="1">
+								<input id="txtRows" name="txtRows" type="number" class="input-small" data-bind="value: rows, attr: {max: maxRows}" min="1" max=32>
 								<span class="help-inline" data-bind="visible: tooFewRows">You need at least one row.</span>
+								<span class="help-inline" data-bind="visible: tooManyRows">You can have no more than <span data-bind="text: maxRows"></span> rows.</span>
 							</div>
 						</div>
 						<div class="control-group" data-bind="css: {error: tooManyMines() || tooFewMines()}">
@@ -104,7 +106,7 @@
 			var boardViewModel = new window.minesweep.boardViewModel();
 
 			boardViewModel.import(board);
-			var game = new window.minesweep.gameViewModel(board, boardViewModel);
+			var game = new window.minesweep.gameViewModel(board, boardViewModel, 32, 32);
 
 			ko.applyBindings(boardViewModel, document.getElementById('divMinesweepBoard'));  
 			ko.applyBindings(game, document.getElementById('divControls'));  
