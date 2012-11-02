@@ -11,6 +11,3 @@ When the *user* is confident that all *tiles* not containing *mines* have been *
 
 + if the *user* is correct, the *game* ends in *victory*
 + if not, the *game* ends in *failure*.
-
-TODO: feedback when "new game is pressed" and size of board hasn't changed.
-TODO: Cheat mode

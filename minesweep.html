@@ -7,11 +7,11 @@
 		<link rel="stylesheet" href="public/css/minesweep.css" type="text/css"> 
 	</head>
 	<body>
-		<div class="navbar navbar-inverse navbar-fixed-top">
+		<div id="divNavBar" class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container-fluid">
 					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></a>
-					<a class="brand" href="#">Mine Sweeper</a> 
+					<a class="brand" href="#" data-bind="event: {mousedown: cheat, mouseup: uncheat}">Mine Sweeper</a> 
 				</div>
 			</div>
 		</div>
@@ -108,6 +108,7 @@
 			boardViewModel.import(board);
 			var game = new window.minesweep.gameViewModel(board, boardViewModel, 32, 32);
 
+			ko.applyBindings(boardViewModel, document.getElementById('divNavBar'));
 			ko.applyBindings(boardViewModel, document.getElementById('divMinesweepBoard'));  
 			ko.applyBindings(game, document.getElementById('divControls'));  
 			ko.applyBindings(game, document.getElementById('ftMessages'));  
