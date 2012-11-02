@@ -1,5 +1,10 @@
 module.exports = { 
-    observable: function(value) { return function() {return value;}},
+    observable: function(value) { 
+        return function(otherValue) {
+            if (otherValue !== undefined) value = otherValue;
+            return value;
+        };
+    },
     observableArray: function(value) {
         var get = function(otherValue) {
             if (otherValue !== undefined) value = otherValue;
