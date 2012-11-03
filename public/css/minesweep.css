@@ -1,11 +1,15 @@
 body {
 	padding-top: 60px;
 	padding-bottom: 40px;
-	background-color: silver;
+	background-color: navy;
+}
+
+footer {
+	margin-top: 20px;
 }
 
 div.container {
-	border: 2px solid navy;
+	border: 2px solid silver;
 	padding: 20px;
 	background-color: white;
 }
@@ -13,10 +17,6 @@ div.container {
 #divControls {
 	padding-top: 10px;
 	border: 1px solid navy;
-}
-
-#divMinesweepBoard {
-	/*border: 1px solid navy;*/
 }
 
 .center {
@@ -43,10 +43,7 @@ td div {
 	text-align: center;
 }
 
-td div.border { 
-	height: 5px;
-	width: 5px;
-}
+td div.border { }
 
 td div.value { 
 	font-size: 12px;
