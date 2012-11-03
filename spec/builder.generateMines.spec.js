@@ -27,6 +27,24 @@ describe('When using the builder and calling generateMines()', function() {
             var newBoard = new board(10, 10, 100); 
             mines = builder.generateMines(newBoard);
             expect(mines.length).toEqual(100);
-        }); 
+        });
+
+        it('the list of mines will not contain any duplicates', function() {
+            var minePositions = new Array(100); 
+            for(var i = 0; i < 100; i++) {
+                minePositions[i] = 0; 
+            }
+
+            var newBoard = new board(10, 10, 100); 
+            mines = builder.generateMines(newBoard);
+
+            //console.log(mines);
+
+            for(var j = 0; j < 100; j++) {
+                var initValue = minePositions[mines[j]];
+                expect(initValue).toBe(0);
+                minePositions[mines[j]] = initValue + 1;
+            }
+        });
     });
 });

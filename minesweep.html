@@ -48,7 +48,7 @@
 							</div>
 						</div>
 						<div class="control-group" data-bind="css: {error: tooManyMines() || tooFewMines()}">
-							<label class="control-label" for="txtBombs">Number of Bombs</label>
+							<label class="control-label" for="txtBombs">Number of Mines</label>
 							<div class="controls">
 								<input id="txtBombs" name="txtBombs" type="number" class="input-small" data-bind="value: numMines, attr: {max: maxMines}" min="1">
 								<span class="help-inline" data-bind="visible: tooManyMines">You have more mines than tiles.</span>
@@ -108,8 +108,8 @@
 			boardViewModel.import(board);
 			var game = new window.minesweep.gameViewModel(board, boardViewModel, 32, 32);
 
-			ko.applyBindings(boardViewModel, document.getElementById('divNavBar'));
 			ko.applyBindings(boardViewModel, document.getElementById('divMinesweepBoard'));  
+			ko.applyBindings(game, document.getElementById('divNavBar'));
 			ko.applyBindings(game, document.getElementById('divControls'));  
 			ko.applyBindings(game, document.getElementById('ftMessages'));  
 		</script>

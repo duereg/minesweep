@@ -19,6 +19,11 @@ describe('With a boardViewModel', function() {
 
     describe('when resetting a board', function() {  
 
+        it('to a board of size 16x16 with 50 mines, 50 mines positions will be recorded.', function() {
+            boardVm.reset(16, 16, 50);
+            expect(boardVm.minePositions.length).toEqual(50);
+        });
+
         it('to a board of size 10x10 with 10 mines, 10 mines positions will be recorded.', function() {
             boardVm.reset(10, 10, 10);
             expect(boardVm.minePositions.length).toEqual(10);
