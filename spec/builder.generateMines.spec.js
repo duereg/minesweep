@@ -38,8 +38,6 @@ describe('When using the builder and calling generateMines()', function() {
             var newBoard = new board(10, 10, 100); 
             mines = builder.generateMines(newBoard);
 
-            //console.log(mines);
-
             for(var j = 0; j < 100; j++) {
                 var initValue = minePositions[mines[j]];
                 expect(initValue).toBe(0);
