@@ -1,4 +1,4 @@
-describe('After calling setupBoard() on the builder', function () {
+describe('After calling addTilesToBoard() on the builder', function () {
 
 	var board = require("../lib/board.js");
 	var builder = require("../lib/builder.js");
@@ -7,8 +7,8 @@ describe('After calling setupBoard() on the builder', function () {
 		var newBoard = new board(10, 10, 10); 
 		 
 		beforeEach(function() {	
-			newBoard.tiles = builder.createTiles(10, 10);	
-			builder.setupBoard(newBoard);
+			newBoard.tiles = builder.createEmptyBoard(10, 10);	
+			builder.addTilesToBoard(newBoard);
 		});  
 
 		describe('the borders will be', function () {

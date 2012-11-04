@@ -67,23 +67,31 @@ describe('When you create a tileViewModel', function() {
         var tile;
 
         beforeEach(function() {
-            tile = new tileViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, value: 0});
-            tile.isTagged(true);
+            tile = new tileViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, isTagged: true, value: 0}); 
         });
 
         it('when you uncover it, the tile will no longer be covered or tagged', function() {
-            tile.uncover();
+            tile.uncover(true);
 
             expect(tile.isCovered()).toBe(false);
             expect(tile.isTagged()).toBe(false);
         });
 
-        it('when you uncover it, no events will be raised', function() {
+        it('when you uncover it with raiseEvent = false, no events will be raised', function() {
             spyOn(amplify, "publish");
 
-            tile.uncover();
+            tile.uncover(false);
 
-            expect(amplify.publish).not.toHaveBeenCalled(); 
+            expect(amplify.publish).not.toHaveBeenCalledWith(tileViewModel.uncoverEvent, column, row, false); 
+        });
+
+        it('when you uncover it with raiseEvent = true, untag and uncover events will be raised', function() {
+            spyOn(amplify, "publish");
+
+            tile.uncover(true);
+
+            expect(amplify.publish).toHaveBeenCalledWith(tileViewModel.uncoverEvent, column, row, true); 
+            expect(amplify.publish).toHaveBeenCalledWith(tileViewModel.tagEvent, tile); 
         });
     })
 
@@ -94,7 +102,7 @@ describe('When you create a tileViewModel', function() {
             tile = new tileViewModel(column, row, { isMine: false, isCovered: false, isBorder: false, value: 0});
         });
 
-        it('when you click it, no event is raised', function() {
+        it('when you click it, no events are raised', function() {
             spyOn(amplify, 'publish');
             tile.click();
 
@@ -104,6 +112,13 @@ describe('When you create a tileViewModel', function() {
         it('when you tag it, no tag is raised', function() {
             spyOn(amplify, 'publish');
             tile.tag();
+
+            expect(amplify.publish).not.toHaveBeenCalled(); 
+        });
+
+        it('when you uncover it, no events are raised', function() {
+            spyOn(amplify, 'publish');
+            tile.uncover(true);
 
             expect(amplify.publish).not.toHaveBeenCalled(); 
         });

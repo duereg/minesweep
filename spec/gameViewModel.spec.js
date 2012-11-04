@@ -13,12 +13,9 @@ describe('With a gameViewModel', function() {
         global.amplify = amplify;
 
         testBoard = new board(8, 8, 10);
-        // board.tiles = builder.createTiles(8, 8);
-        // builder.setupBoard(board);
 
         var boardViewModel = require("../lib/boardViewModel.js");
         testBoardVm = new boardViewModel();
-        //boardVm.import(board);
 
         var gameViewModel = require("../lib/gameViewModel.js");
         game = new gameViewModel(testBoard, testBoardVm, 32, 32);

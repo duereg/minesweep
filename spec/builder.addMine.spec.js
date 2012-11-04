@@ -6,8 +6,8 @@ describe('After calling addMine() on a 10x10 board', function () {
     var newBoard = new board(10, 10, 10); 
 
     beforeEach(function() {
-        newBoard.tiles = builder.createTiles(10, 10);
-        builder.setupBoard(newBoard); //Setup board but do not add mines
+        newBoard.tiles = builder.createEmptyBoard(10, 10);
+        builder.addTilesToBoard(newBoard); //Setup board but do not add mines
         builder.addMine(newBoard, 5, 5);
     });
 

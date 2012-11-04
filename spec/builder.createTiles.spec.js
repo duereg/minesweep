@@ -6,7 +6,7 @@ describe('When using the builder', function() {
 		var newBoard = new board(10, 10, 10); 
 		
 		beforeEach(function() {
-			newBoard.tiles = builder.createTiles(10, 10);
+			newBoard.tiles = builder.createEmptyBoard(10, 10);
 		});
 
 		it('the board will have 12 columns (10 columns + 2 borders)', function() {
