@@ -66,12 +66,20 @@
 						<table cellpadding="0" cellspacing="0" class="minesweep">
 							<tbody data-bind="foreach: tiles">
 								<tr data-bind="foreach: $data">
-									<td data-bind="event: {contextmenu: tag}">
-										<div class="border" data-bind="visible: isBorder"></div>
-										<div class="mine" data-bind="visible: showMine" ></div>
-										<div class="value" data-bind="visible: showValue, text: value, style: { color: getValueColor }"></div>
-										<div class="flagged" data-bind="visible: isTagged, click: click" ></div>
-										<div class="blank"  data-bind="visible: isBlank, click: click" ></div>
+									<td>
+										<!-- ko if: typeof isBorder !== 'undefined' -->
+									    <div class="border"></div>
+									    <!-- /ko -->
+										<!-- ko if: typeof isMine !== 'undefined' -->
+										<div data-bind="visible: !isCovered() && !isTagged(), css: { mine: armed, disarmed: !armed() } , event: {contextmenu: tag}" ></div>
+									    <!-- /ko -->
+										<!-- ko if: typeof isValue !== 'undefined' -->
+										<div class="value" data-bind="visible: isValue, text: value, style: { color: getValueColor }, event: {contextmenu: tag}"></div>
+									    <!-- /ko -->
+										<!-- ko if: typeof isTagged !== 'undefined' -->
+										<div class="flagged" data-bind="visible: isTagged, click: click, event: {contextmenu: tag}" ></div> 
+										<div class="blank"  data-bind="visible: isBlank, click: click, event: {contextmenu: tag}" ></div>
+									    <!-- /ko -->
 									</td>
 								</tr>
 							</tbody> 
@@ -95,10 +103,14 @@
 		<script type="text/javascript" src="public/js/amplify.core.min.js"></script>
 		<script type="text/javascript" src="lib/define.js"></script>
 		<script type="text/javascript" src="lib/require.js"></script>
+		<script type="text/javascript" src="lib/events.js"></script>
 		<script type="text/javascript" src="lib/board.js"></script>
 		<script type="text/javascript" src="lib/builder.js"></script>
 		<script type="text/javascript" src="lib/boardBuilder.js"></script>
 		<script type="text/javascript" src="lib/tileViewModel.js"></script>
+		<script type="text/javascript" src="lib/mineViewModel.js"></script>
+		<script type="text/javascript" src="lib/valueViewModel.js"></script>
+		<script type="text/javascript" src="lib/tileFactory.js"></script>
 		<script type="text/javascript" src="lib/boardViewModel.js"></script>
 		<script type="text/javascript" src="lib/gameViewModel.js"></script> 
 		<script type="text/javascript">

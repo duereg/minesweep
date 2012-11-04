@@ -75,6 +75,13 @@ div.mine {
 	background-size: 16px 16px;
 }
 
+div.disarmed {
+	background-image: url('../img/safe-64x64x8.png');
+	width: 16px;
+	height: 16px;
+	background-size: 16px 16px;
+}
+
 div.flagged {
 	background-image: url('../img/flag-64x64x8.png');
 	width: 16px;
