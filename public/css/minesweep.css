@@ -29,7 +29,7 @@ input[type="number"] {
 }
 
 table.minesweep {
-	border: none;
+	border: 1px solid navy;
 	padding: 0; 
 	border-spacing: 0;
 	border-collapse: collapse;
@@ -55,25 +55,29 @@ td div.value {
 }
 
 div.blank {
-	background-image: url('../img/blank.gif');
+	background-image: url('../img/blank-64x64x8.png');
 	width: 16px;
 	height: 16px;
+	background-size: 16px 16px;
 }
 
 div.blank:hover {
-	background-image: url('../img/GreenTile.gif');
+	background-image: url('../img/hover-64x64x8.png');
 	width: 16px;
 	height: 16px;
+	background-size: 16px 16px;
 }
 
 div.mine {
-	background-image: url('../img/bombdeath.gif');
+	background-image: url('../img/Mine3_64x64x8.png');
 	width: 16px;
 	height: 16px;
+	background-size: 16px 16px;
 }
 
 div.flagged {
-	background-image: url('../img/bombflagged.gif');
+	background-image: url('../img/flag-64x64x8.png');
 	width: 16px;
 	height: 16px;
+	background-size: 16px 16px;
 }
