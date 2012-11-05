@@ -1,7 +1,7 @@
 body {
 	padding-top: 60px;
 	padding-bottom: 40px;
-	background-color: navy;
+	background-image: url('../img/wild_oliva.png');
 }
 
 footer {
@@ -9,12 +9,14 @@ footer {
 }
 
 div.container {
+	border-radius: 5px;
 	border: 2px solid silver;
 	padding: 20px;
 	background-color: white;
 }
 
 #divControls {
+	border-radius: 5px;
 	padding-top: 10px;
 	border: 1px solid navy;
 }
@@ -29,7 +31,6 @@ input[type="number"] {
 }
 
 table.minesweep {
-	border: 1px solid navy;
 	padding: 0; 
 	border-spacing: 0;
 	border-collapse: collapse;
