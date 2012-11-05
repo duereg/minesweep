@@ -1,7 +1,7 @@
-describe('With a valueViewModel', function() { 
+describe('With a ValueViewModel', function() { 
 
-    var tileViewModel; 
-    var valueViewModel; 
+    var TileViewModel; 
+    var ValueViewModel; 
 
     var column = 4;
     var row = 6;
@@ -13,8 +13,8 @@ describe('With a valueViewModel', function() {
     beforeEach(function() {
         global.ko = ko;
         global.amplify = amplify;
-        tileViewModel = require("../lib/tileViewModel.js");  
-        valueViewModel = require("../lib/valueViewModel.js"); 
+        TileViewModel = require("../lib/TileViewModel.js");  
+        ValueViewModel = require("../lib/ValueViewModel.js"); 
     });
 
     afterEach(function() {
@@ -26,7 +26,7 @@ describe('With a valueViewModel', function() {
         var tile;
 
         beforeEach(function() {
-            tile = new valueViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, value: 0});
+            tile = new ValueViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, value: 0});
         });
 
         it('when you click it, the uncover event is raised', function() {
@@ -48,7 +48,7 @@ describe('With a valueViewModel', function() {
         var tile;
 
         beforeEach(function() {
-            tile = new valueViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, isTagged: true, value: 0}); 
+            tile = new ValueViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, isTagged: true, value: 0}); 
         });
 
         it('when you uncover it, the tile will no longer be covered or tagged', function() {

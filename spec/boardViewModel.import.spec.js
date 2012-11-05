@@ -1,4 +1,4 @@
-describe('With a boardViewModel', function() { 
+describe('With a BoardViewModel', function() { 
 
     var ko = require("./fake.ko.js");
     var amplify = require("./fake.amplify.js");
@@ -8,8 +8,8 @@ describe('With a boardViewModel', function() {
     beforeEach(function() {
         global.ko = ko;
         global.amplify = amplify;
-        var boardViewModel = require("../lib/boardViewModel.js");
-        boardVm = new boardViewModel();
+        var BoardViewModel = require("../lib/BoardViewModel.js");
+        boardVm = new BoardViewModel();
     });
 
     afterEach(function() {

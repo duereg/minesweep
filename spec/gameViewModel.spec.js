@@ -1,12 +1,12 @@
-describe('With a gameViewModel', function() { 
+describe('With a GameViewModel', function() { 
 
     var ko = require("./fake.ko.js");
     var amplify = require("./fake.amplify.js");
     var events = require("../lib/events.js"); 
-    var board = require("../lib/board.js"); 
+    var Board = require("../lib/Board.js"); 
     var builder = require("../lib/builder.js"); 
-    var tileViewModel = null;
-    var mineViewModel = null;
+    var TileViewModel = null;
+    var MineViewModel = null;
     var testBoard = null;
     var testBoardVm = null;
     var game = null;
@@ -15,16 +15,16 @@ describe('With a gameViewModel', function() {
         global.ko = ko;
         global.amplify = amplify;
 
-        testBoard = new board(8, 8, 10);
+        testBoard = new Board(8, 8, 10);
 
-        mineViewModel = require("../lib/mineViewModel.js");
-        tileViewModel = require("../lib/tileViewModel.js");
+        MineViewModel = require("../lib/MineViewModel.js");
+        TileViewModel = require("../lib/TileViewModel.js");
 
-        var boardViewModel = require("../lib/boardViewModel.js");
-        testBoardVm = new boardViewModel();
+        var BoardViewModel = require("../lib/BoardViewModel.js");
+        testBoardVm = new BoardViewModel();
 
-        var gameViewModel = require("../lib/gameViewModel.js");
-        game = new gameViewModel(testBoard, testBoardVm, 32, 32);
+        var GameViewModel = require("../lib/GameViewModel.js");
+        game = new GameViewModel(testBoard, testBoardVm, 32, 32);
     });
 
     afterEach(function() {
@@ -34,7 +34,7 @@ describe('With a gameViewModel', function() {
 
     describe('when cheating', function() {  
  
-        it('if the game has not failed, showMines() will be called on the board.', function() {
+        it('if the game has not failed, showMines() will be called on the Board.', function() {
            spyOn(global.amplify, "publish");
 
            game.cheat();
@@ -42,7 +42,7 @@ describe('With a gameViewModel', function() {
            expect(global.amplify.publish).toHaveBeenCalledWith(events.tile.showMines, true);
         });
 
-        it('if the game has failed, showMines() will not be called on the board.', function() {
+        it('if the game has failed, showMines() will not be called on the Board.', function() {
            spyOn(global.amplify, "publish");
 
            game.failure(true)
@@ -54,7 +54,7 @@ describe('With a gameViewModel', function() {
 
     describe('when uncheating', function() {  
 
-        it('if the game has not failed, hideMines() will be called on the board.', function() {
+        it('if the game has not failed, hideMines() will be called on the Board.', function() {
            spyOn(global.amplify, "publish");
 
            game.uncheat();
@@ -63,7 +63,7 @@ describe('With a gameViewModel', function() {
            expect(global.amplify.publish).toHaveBeenCalledWith(events.tile.hideMines);
         });
 
-        it('if the game has failed, hideMines() will not be called on the board.', function() {
+        it('if the game has failed, hideMines() will not be called on the Board.', function() {
            spyOn(global.amplify, "publish");
 
            game.failure(true)

@@ -104,24 +104,24 @@
 		<script type="text/javascript" src="lib/define.js"></script>
 		<script type="text/javascript" src="lib/require.js"></script>
 		<script type="text/javascript" src="lib/events.js"></script>
-		<script type="text/javascript" src="lib/board.js"></script>
+		<script type="text/javascript" src="lib/Board.js"></script>
 		<script type="text/javascript" src="lib/builder.js"></script>
 		<script type="text/javascript" src="lib/boardBuilder.js"></script>
-		<script type="text/javascript" src="lib/tileViewModel.js"></script>
-		<script type="text/javascript" src="lib/mineViewModel.js"></script>
-		<script type="text/javascript" src="lib/valueViewModel.js"></script>
+		<script type="text/javascript" src="lib/TileViewModel.js"></script>
+		<script type="text/javascript" src="lib/MineViewModel.js"></script>
+		<script type="text/javascript" src="lib/ValueViewModel.js"></script>
 		<script type="text/javascript" src="lib/tileFactory.js"></script>
-		<script type="text/javascript" src="lib/boardViewModel.js"></script>
-		<script type="text/javascript" src="lib/gameViewModel.js"></script> 
+		<script type="text/javascript" src="lib/BoardViewModel.js"></script>
+		<script type="text/javascript" src="lib/GameViewModel.js"></script> 
 		<script type="text/javascript">
 			//This could be in its own file but I'm leaving it here so the code reviewers have an easy start -->
 			var board = window.minesweep.boardBuilder(8, 8, 10);
-			var boardViewModel = new window.minesweep.boardViewModel();
+			var boardVm = new window.minesweep.BoardViewModel();
 
-			boardViewModel.importTiles(board);
-			var game = new window.minesweep.gameViewModel(board, boardViewModel, 32, 32);
+			boardVm.importTiles(board);
+			var game = new window.minesweep.GameViewModel(board, boardVm, 32, 32);
 
-			ko.applyBindings(boardViewModel, document.getElementById('divMinesweepBoard'));  
+			ko.applyBindings(boardVm, document.getElementById('divMinesweepBoard'));  
 			ko.applyBindings(game, document.getElementById('divNavBar'));
 			ko.applyBindings(game, document.getElementById('divControls'));  
 			ko.applyBindings(game, document.getElementById('ftMessages'));  

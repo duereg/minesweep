@@ -1,7 +1,7 @@
-describe('With a mineViewModel', function() { 
+describe('With a MineViewModel', function() { 
 
-    var tileViewModel;  
-    var mineViewModel;
+    var TileViewModel;  
+    var MineViewModel;
 
     var column = 4;
     var row = 6;
@@ -13,8 +13,8 @@ describe('With a mineViewModel', function() {
     beforeEach(function() {
         global.ko = ko;
         global.amplify = amplify;
-        tileViewModel = require("../lib/tileViewModel.js"); 
-        mineViewModel = require("../lib/mineViewModel.js"); 
+        TileViewModel = require("../lib/TileViewModel.js"); 
+        MineViewModel = require("../lib/MineViewModel.js"); 
     });
 
     afterEach(function() {
@@ -26,7 +26,7 @@ describe('With a mineViewModel', function() {
         var tile;
 
         beforeEach(function() {
-            tile = new mineViewModel(column, row, { isMine: true, isCovered: true, isBorder: false, value: 0});
+            tile = new MineViewModel(column, row, { isMine: true, isCovered: true, isBorder: false, value: 0});
         });
 
         it('the explodedEvent will be defined', function() {
@@ -53,7 +53,7 @@ describe('With a mineViewModel', function() {
         var tile;
 
         beforeEach(function() {
-            tile = new mineViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, isTagged: true, value: 0}); 
+            tile = new MineViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, isTagged: true, value: 0}); 
         });
 
         it('when you uncover it, the mine will no longer be covered or tagged', function() {

@@ -1,6 +1,6 @@
-describe('With a tileViewModel', function() { 
+describe('With a TileViewModel', function() { 
 
-    var tileViewModel;  
+    var TileViewModel;  
 
     var column = 4;
     var row = 6;
@@ -12,7 +12,7 @@ describe('With a tileViewModel', function() {
     beforeEach(function() {
         global.ko = ko;
         global.amplify = amplify;
-        tileViewModel = require("../lib/tileViewModel.js");  
+        TileViewModel = require("../lib/TileViewModel.js");  
     });
 
     afterEach(function() {
@@ -24,7 +24,7 @@ describe('With a tileViewModel', function() {
         var tile;
 
         beforeEach(function() {
-            tile = new tileViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, value: 0});
+            tile = new TileViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, value: 0});
         });
 
         it('when you click it, the uncover event is raised', function() {
@@ -46,7 +46,7 @@ describe('With a tileViewModel', function() {
         var tile;
 
         beforeEach(function() {
-            tile = new tileViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, isTagged: true, value: 0}); 
+            tile = new TileViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, isTagged: true, value: 0}); 
         });
 
         it('when you uncover it, the tile will no longer be covered or tagged', function() {

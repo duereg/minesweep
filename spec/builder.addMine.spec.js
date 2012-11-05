@@ -1,13 +1,13 @@
-describe('After calling addMine() on a 10x10 board', function () {
+describe('After calling addMine() on a 10x10 Board', function () {
 
-    var board = require("../lib/board.js");
+    var Board = require("../lib/Board.js");
     var builder = require("../lib/builder.js");
 
-    var newBoard = new board(10, 10, 10); 
+    var newBoard = new Board(10, 10, 10); 
 
     beforeEach(function() {
         newBoard.tiles = builder.createEmptyBoard(10, 10);
-        builder.addTilesToBoard(newBoard); //Setup board but do not add mines
+        builder.addTilesToBoard(newBoard); //Setup Board but do not add mines
         builder.addMine(newBoard, 5, 5);
     });
 
