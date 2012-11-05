@@ -118,7 +118,7 @@
 			var board = window.minesweep.boardBuilder(8, 8, 10);
 			var boardViewModel = new window.minesweep.boardViewModel();
 
-			boardViewModel.import(board);
+			boardViewModel.importTiles(board);
 			var game = new window.minesweep.gameViewModel(board, boardViewModel, 32, 32);
 
 			ko.applyBindings(boardViewModel, document.getElementById('divMinesweepBoard'));  
