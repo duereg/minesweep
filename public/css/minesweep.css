@@ -47,9 +47,9 @@ td div {
 td div.border { }
 
 td div.value { 
-	font-size: 12px;
 	font-weight: bold;
 	border: 1px solid white;
+	font-size: 12px;
 	height: 14px;
 	width: 14px;
 	background-color: silver;

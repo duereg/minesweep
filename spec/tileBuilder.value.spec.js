@@ -10,7 +10,7 @@ describe('With a tileFactory', function() {
         global.ko = ko;
         global.amplify = amplify; 
         
-        tileFactory = require("../lib/tileFactory.js")
+        tileFactory = require("../lib/tileBuilder.js");
     });
 
     afterEach(function() {
@@ -22,7 +22,7 @@ describe('With a tileFactory', function() {
         var tile;
 
         beforeEach(function() {
-            tile = tileFactory(column, row, { isMine: false, isCovered: true, isBorder: false, value: 0});
+            tile = tileFactory.createTile(1, 1);
         });
 
         it('value will be defined', function() {

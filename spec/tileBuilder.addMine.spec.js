@@ -1,18 +1,28 @@
 describe('After calling addMine() on a 10x10 Board', function () {
 
-    var Board = require("../lib/Board.js");
+    var tiles;
+    var ko = require("./fake.ko.js");
+    var amplify = require("./fake.amplify.js"); 
     var builder = require("../lib/builder.js");
-
-    var newBoard = new Board(10, 10, 10); 
+    var tileBuilder;
 
     beforeEach(function() {
-        newBoard.tiles = builder.createEmptyBoard(10, 10);
-        builder.addTilesToBoard(newBoard); //Setup Board but do not add mines
-        builder.addMine(newBoard, 5, 5);
+        global.ko = ko;
+        global.amplify = amplify; 
+
+        tileBuilder = require("../lib/tileBuilder.js");
+        tiles = builder.createEmptyBoard(10, 10);
+        builder.addTilesToBoard(tiles); //Setup Board but do not add mines
+        tiles[5][5] = tileBuilder.createMine(5, 5);
+    });
+
+    afterEach(function() {
+        delete global.ko;
+        delete global.amplify;
     });
 
     it('the call will set the tile to IsMine === true', function() { 
-        expect(newBoard.tiles[5][5].isMine).toBe(true);
+        expect(newBoard.tiles[5][5].isMine).toBeDefined();
     });
 
     it('the call will not increment the value of the Mine', function() { 
@@ -50,7 +60,7 @@ describe('After calling addMine() on a 10x10 Board', function () {
 
     function checkTileValue(column, row, value) {
         if(!newBoard.tiles[column][row].isBorder && !newBoard.tiles[column][row].isMine) {
-            expect(newBoard.tiles[column][row].value).toBe(value);
+            expect(newBoard.tiles[column][row].value()).toBe(value);
         }
     };
 }); 

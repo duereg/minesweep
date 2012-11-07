@@ -2,20 +2,17 @@ describe('With a GameViewModel', function() {
 
     var ko = require("./fake.ko.js");
     var amplify = require("./fake.amplify.js");
-    var events = require("../lib/events.js"); 
-    var Board = require("../lib/Board.js"); 
+    var events = require("../lib/events.js");
     var builder = require("../lib/builder.js"); 
+    var config = {columns: 8, rows: 8, numMines: 10};
     var TileViewModel = null;
     var MineViewModel = null;
-    var testBoard = null;
     var testBoardVm = null;
     var game = null;
 
     beforeEach(function() {
         global.ko = ko;
         global.amplify = amplify;
-
-        testBoard = new Board(8, 8, 10);
 
         MineViewModel = require("../lib/MineViewModel.js");
         TileViewModel = require("../lib/TileViewModel.js");
@@ -24,7 +21,7 @@ describe('With a GameViewModel', function() {
         testBoardVm = new BoardViewModel();
 
         var GameViewModel = require("../lib/GameViewModel.js");
-        game = new GameViewModel(testBoard, testBoardVm, 32, 32);
+        game = new GameViewModel(config, testBoardVm, 32, 32);
     });
 
     afterEach(function() {

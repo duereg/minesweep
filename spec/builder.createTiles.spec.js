@@ -1,9 +1,7 @@
 describe('When using the builder', function() {
 
 	describe('to create tiles on a 10x10 Board', function() {
-		var Board = require("../lib/Board.js");
 		var builder = require("../lib/builder.js");
-		var newBoard = new Board(10, 10, 10); 
 		
 		beforeEach(function() {
 			newBoard.tiles = builder.createEmptyBoard(10, 10);

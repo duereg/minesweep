@@ -1,14 +1,14 @@
 describe('After calling addTilesToBoard() on the builder', function () {
 
-	var Board = require("../lib/Board.js");
 	var builder = require("../lib/builder.js");
+	var tileBuilder = require("../lib/fake.tileBuilder.js");
 
-	describe('on a 10x10 Board', function () {
-		var newBoard = new Board(10, 10, 10); 
-		 
+	describe('on a 10x10 Board', function () { 
+		var tiles;
+
 		beforeEach(function() {	
-			newBoard.tiles = builder.createEmptyBoard(10, 10);	
-			builder.addTilesToBoard(newBoard);
+			tiles = builder.createEmptyBoard(10, 10);	
+			builder.addTilesToBoard(tiles, tileBuilder);
 		});  
 
 		describe('the borders will be', function () {

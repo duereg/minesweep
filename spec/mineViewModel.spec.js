@@ -26,7 +26,7 @@ describe('With a MineViewModel', function() {
         var tile;
 
         beforeEach(function() {
-            tile = new MineViewModel(column, row, { isMine: true, isCovered: true, isBorder: false, value: 0});
+            tile = new MineViewModel(column, row);
         });
 
         it('the explodedEvent will be defined', function() {
@@ -53,7 +53,8 @@ describe('With a MineViewModel', function() {
         var tile;
 
         beforeEach(function() {
-            tile = new MineViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, isTagged: true, value: 0}); 
+            tile = new MineViewModel(column, row);
+            tile.isTagged(true); 
         });
 
         it('when you uncover it, the mine will no longer be covered or tagged', function() {

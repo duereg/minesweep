@@ -2,12 +2,13 @@ describe('With a BoardViewModel', function() {
 
     var ko = require("./fake.ko.js");
     var amplify = require("./fake.amplify.js");
-    var boardBuilder = require("../lib/boardBuilder.js"); 
+    var boardBuilder = null; 
     var boardVm = null;
 
     beforeEach(function() {
         global.ko = ko;
         global.amplify = amplify;
+        boardBuilder = require("../lib/boardBuilder.js")
         var BoardViewModel = require("../lib/BoardViewModel.js");
         boardVm = new BoardViewModel();
     });
