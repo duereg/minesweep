@@ -22,7 +22,7 @@ describe('After calling addMine() on a 10x10 Board', function () {
     });
 
     it('the call will set the tile to IsMine === true', function() { 
-        expect(newBoard.tiles[5][5].isMine).toBeDefined();
+        expect(tiles[5][5].isMine).toBeDefined();
     });
 
     it('the call will not increment the value of the Mine', function() { 
@@ -42,7 +42,7 @@ describe('After calling addMine() on a 10x10 Board', function () {
 
     describe('When adding a 2nd mine next to the original on the same row', function () {
         beforeEach(function() {
-            builder.addMine(newBoard, 4, 5);
+            builder.addMine(tiles, 4, 5);
         });
 
         it('the tiles in the rows directly above and below the two mines will have a value of 2', function() { 
@@ -59,8 +59,8 @@ describe('After calling addMine() on a 10x10 Board', function () {
     });
 
     function checkTileValue(column, row, value) {
-        if(!newBoard.tiles[column][row].isBorder && !newBoard.tiles[column][row].isMine) {
-            expect(newBoard.tiles[column][row].value()).toBe(value);
+        if(!tiles[column][row].isBorder && !tiles[column][row].isMine) {
+            expect(tiles[column][row].value()).toBe(value);
         }
     };
 }); 

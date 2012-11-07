@@ -1,7 +1,7 @@
 describe('After calling addTilesToBoard() on the builder', function () {
 
 	var builder = require("../lib/builder.js");
-	var tileBuilder = require("../lib/fake.tileBuilder.js");
+	var tileBuilder = require("./fake.tileBuilder.js");
 
 	describe('on a 10x10 Board', function () { 
 		var tiles;
