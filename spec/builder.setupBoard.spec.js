@@ -14,26 +14,26 @@ describe('After calling addTilesToBoard() on the builder', function () {
 		describe('the borders will be', function () {
 
 			it('the 1st row', function () {  
-				for(var column = 0; column < newBoard.tiles.length; column++) {
-					expect(newBoard.tiles[column][0].isBorder).toBe(true);
+				for(var column = 0; column < tiles.length; column++) {
+					expect(tiles[column][0].isBorder).toBe(true);
 				}
 			});
 
 			it('the last row', function () {  
-				for(var column = 0; column < newBoard.tiles.length; column++) {
-					expect(newBoard.tiles[column][11].isBorder).toBe(true);
+				for(var column = 0; column < tiles.length; column++) {
+					expect(tiles[column][11].isBorder).toBe(true);
 				}
 			});
 
 			it('the 1st column', function () {  
-				for(var row = 0; row < newBoard.tiles[0].length; row++) {
-					expect(newBoard.tiles[0][row].isBorder).toBe(true);
+				for(var row = 0; row < tiles[0].length; row++) {
+					expect(tiles[0][row].isBorder).toBe(true);
 				}
 			});
 
 			it('the last column', function () { 
-				for(var row = 0; row < newBoard.tiles[11].length; row++) {
-					expect(newBoard.tiles[11][row].isBorder).toBe(true);
+				for(var row = 0; row < tiles[11].length; row++) {
+					expect(tiles[11][row].isBorder).toBe(true);
 				}
 			});
 		});

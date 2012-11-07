@@ -42,7 +42,7 @@ describe('After calling addMine() on a 10x10 Board', function () {
 
     describe('When adding a 2nd mine next to the original on the same row', function () {
         beforeEach(function() {
-            builder.addMine(tiles, 4, 5);
+            tiles[5][5] = tileBuilder.createMine(4, 5);
         });
 
         it('the tiles in the rows directly above and below the two mines will have a value of 2', function() { 
