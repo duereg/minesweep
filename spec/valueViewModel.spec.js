@@ -26,7 +26,7 @@ describe('With a ValueViewModel', function() {
         var tile;
 
         beforeEach(function() {
-            tile = new ValueViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, value: 0});
+            tile = new ValueViewModel(column, row);
         });
 
         it('when you click it, the uncover event is raised', function() {
@@ -48,7 +48,8 @@ describe('With a ValueViewModel', function() {
         var tile;
 
         beforeEach(function() {
-            tile = new ValueViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, isTagged: true, value: 0}); 
+            tile = new ValueViewModel(column, row); 
+            tile.isTagged(true);
         });
 
         it('when you uncover it, the tile will no longer be covered or tagged', function() {
@@ -69,7 +70,13 @@ describe('With a ValueViewModel', function() {
         it('when you uncover it with raiseEvent = true, untag and uncover events will be raised', function() {
             spyOn(amplify, "publish");
 
+            console.log(tile.isCovered());
+            console.log(tile.isTagged());
+
             tile.uncover(true);
+
+            console.log(tile.isCovered());
+            console.log(tile.isTagged());
 
             expect(amplify.publish).toHaveBeenCalledWith(events.tile.uncover, column, row, true); 
             expect(amplify.publish).toHaveBeenCalledWith(events.tile.tag, tile); 
