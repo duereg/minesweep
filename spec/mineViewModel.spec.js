@@ -22,6 +22,20 @@ describe('With a MineViewModel', function() {
         delete global.amplify;
     });
  
+    it("when destroy() is called, unsubscribe() is called for resize, destroy, exploded, showMines, hideMines, and disarm", function() {
+        var tile = new MineViewModel(column, row);
+        spyOn(amplify, 'unsubscribe');
+        tile.destroy();
+
+        expect(amplify.unsubscribe).toHaveBeenCalledWith(events.tile.resize, tile.size);
+        expect(amplify.unsubscribe).toHaveBeenCalledWith(events.tile.destroy, tile.destroy); 
+        expect(amplify.unsubscribe).toHaveBeenCalledWith(events.tile.exploded, tile.explode);
+        expect(amplify.unsubscribe).toHaveBeenCalledWith(events.tile.showMines, tile.showMine); 
+        expect(amplify.unsubscribe).toHaveBeenCalledWith(events.tile.hideMines, tile.hideMine);
+        expect(amplify.unsubscribe).toHaveBeenCalledWith(events.tile.disarm, tile.disarm); 
+    });
+ 
+
     describe('as a covered mine', function() { 
         var tile;
 
