@@ -1,6 +1,5 @@
 describe('With a BoardViewModel', function() { 
 
-    var events = require("../lib/events.js");
     var ko = require("./fake.ko.js");
     var amplify = require("./fake.amplify.js");
     var boardBuilder = null; 
@@ -10,7 +9,7 @@ describe('With a BoardViewModel', function() {
         global.ko = ko;
         global.amplify = amplify;
         boardBuilder = require("../lib/boardBuilder.js")
-        var BoardViewModel = require("../lib/BoardViewModel.js");
+        var BoardViewModel = require("../lib/boardViewModel.js");
         boardVm = new BoardViewModel();
     });
 
@@ -45,15 +44,6 @@ describe('With a BoardViewModel', function() {
             boardVm.importTiles(testBoard);
             expect(boardVm.tiles().length).toEqual(3);
             expect(boardVm.tiles()[0].length).toEqual(3);
-        });
-
-        it("the tile.destroy event will be raised", function() {
-            spyOn(amplify, 'publish');
-
-            var testBoard = boardBuilder(1, 1, 1);
-            boardVm.importTiles(testBoard);
-
-            expect(amplify.publish).toHaveBeenCalledWith(events.tile.destroy);
         });
     });
 });

@@ -13,8 +13,8 @@ describe('With a ValueViewModel', function() {
     beforeEach(function() {
         global.ko = ko;
         global.amplify = amplify;
-        TileViewModel = require("../lib/TileViewModel.js");  
-        ValueViewModel = require("../lib/ValueViewModel.js"); 
+        TileViewModel = require("../lib/tileViewModel.js");  
+        ValueViewModel = require("../lib/valueViewModel.js"); 
     });
 
     afterEach(function() {

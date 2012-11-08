@@ -13,8 +13,8 @@ describe('With a MineViewModel', function() {
     beforeEach(function() {
         global.ko = ko;
         global.amplify = amplify;
-        TileViewModel = require("../lib/TileViewModel.js"); 
-        MineViewModel = require("../lib/MineViewModel.js"); 
+        TileViewModel = require("../lib/tileViewModel.js"); 
+        MineViewModel = require("../lib/mineViewModel.js"); 
     });
 
     afterEach(function() {

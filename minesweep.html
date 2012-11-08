@@ -129,23 +129,22 @@
 		<script type="text/javascript" src="lib/define.js"></script>
 		<script type="text/javascript" src="lib/require.js"></script>
 		<script type="text/javascript" src="lib/events.js"></script>
-		<script type="text/javascript" src="lib/tileBuilder.js"></script>
 		<script type="text/javascript" src="lib/builder.js"></script>
-		<script type="text/javascript" src="lib/boardBuilder.js"></script>
 		<script type="text/javascript" src="lib/TileViewModel.js"></script>
 		<script type="text/javascript" src="lib/MineViewModel.js"></script>
 		<script type="text/javascript" src="lib/ValueViewModel.js"></script>
+		<script type="text/javascript" src="lib/tileBuilder.js"></script>
+		<script type="text/javascript" src="lib/boardBuilder.js"></script>
 		<script type="text/javascript" src="lib/BoardViewModel.js"></script>
 		<script type="text/javascript" src="lib/GameViewModel.js"></script> 
 		<script type="text/javascript">
 			//This could be in its own file but I'm leaving it here so the code reviewers have an easy start -->
 			var boardBuilder = window.minesweep.boardBuilder;
-			var config = { columns: 8, rows: 8, numMines: 10 };
-			var tiles = boardBuilder(config);
-			var boardVm = new window.minesweep.BoardViewModel();
+			var config = { columns: 8, rows: 8, numMines: 10 }; 
+			var boardVm = new window.minesweep.boardViewModel();
 
-			boardVm.importTiles(tiles);
-			var game = new window.minesweep.GameViewModel(config, boardVm, 32, 32);
+			boardVm.newGame(config.columns, config.rows, config.numMines);
+			var game = new window.minesweep.gameViewModel(config, boardVm, 32, 32);
 
 			ko.applyBindings(boardVm, document.getElementById('divMinesweepBoard'));  
 			ko.applyBindings(game, document.getElementById('divNavBar'));

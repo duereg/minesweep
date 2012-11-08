@@ -14,13 +14,13 @@ describe('With a GameViewModel', function() {
         global.ko = ko;
         global.amplify = amplify;
 
-        MineViewModel = require("../lib/MineViewModel.js");
-        TileViewModel = require("../lib/TileViewModel.js");
+        MineViewModel = require("../lib/mineViewModel.js");
+        TileViewModel = require("../lib/tileViewModel.js");
 
-        var BoardViewModel = require("../lib/BoardViewModel.js");
+        var BoardViewModel = require("../lib/boardViewModel.js");
         testBoardVm = new BoardViewModel();
 
-        var GameViewModel = require("../lib/GameViewModel.js");
+        var GameViewModel = require("../lib/gameViewModel.js");
         game = new GameViewModel(config, testBoardVm, 32, 32);
     });
 

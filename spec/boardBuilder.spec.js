@@ -27,4 +27,16 @@ describe('When creating a board from the boardBuilder', function() {
         expect(board.length).toEqual(12);
         expect(board[0].length).toEqual(12);
     });
+
+    it('if column is not a number, an error will occur', function() {
+        expect(function() { boardBuilder("foo", 10, 10); }).toThrow();
+    });
+
+    it('if row is not a number, an error will occur', function() {
+        expect(function() { boardBuilder(10, "foo",  10); }).toThrow();
+    });
+
+    it('if the number of mines is not a number, an error will occur', function() {
+        expect(function() { boardBuilder( 10, 10, "foo"); }).toThrow();
+    });
 });

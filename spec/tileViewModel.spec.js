@@ -12,7 +12,7 @@ describe('With a TileViewModel', function() {
     beforeEach(function() {
         global.ko = ko;
         global.amplify = amplify;
-        TileViewModel = require("../lib/TileViewModel.js");  
+        TileViewModel = require("../lib/tileViewModel.js");  
     });
 
     afterEach(function() {
