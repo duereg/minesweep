@@ -19,12 +19,21 @@ describe('With a TileViewModel', function() {
         delete global.ko;
         delete global.amplify;
     });
+
+    it("when destroy() is called, unsubscribe() is called for resize and destroy", function() {
+        var tile = new TileViewModel(column, row);
+        spyOn(amplify, 'unsubscribe');
+        tile.destroy();
+
+        expect(amplify.unsubscribe).toHaveBeenCalledWith(events.tile.resize, tile.size);
+        expect(amplify.unsubscribe).toHaveBeenCalledWith(events.tile.destroy, tile.destroy); 
+    });
  
     describe('as a covered tile', function() { 
         var tile;
 
         beforeEach(function() {
-            tile = new TileViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, value: 0});
+            tile = new TileViewModel(column, row);
         });
 
         it('when you click it, the uncover event is raised', function() {
@@ -46,7 +55,8 @@ describe('With a TileViewModel', function() {
         var tile;
 
         beforeEach(function() {
-            tile = new TileViewModel(column, row, { isMine: false, isCovered: true, isBorder: false, isTagged: true, value: 0}); 
+            tile = new TileViewModel(column, row); 
+            tile.isTagged(true);
         });
 
         it('when you uncover it, the tile will no longer be covered or tagged', function() {

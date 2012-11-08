@@ -70,14 +70,9 @@ describe('With a ValueViewModel', function() {
         it('when you uncover it with raiseEvent = true, untag and uncover events will be raised', function() {
             spyOn(amplify, "publish");
 
-            console.log(tile.isCovered());
-            console.log(tile.isTagged());
-
             tile.uncover(true);
 
-            console.log(tile.isCovered());
-            console.log(tile.isTagged());
-
+            expect(amplify.publish.calls.length).toEqual(2);
             expect(amplify.publish).toHaveBeenCalledWith(events.tile.uncover, column, row, true); 
             expect(amplify.publish).toHaveBeenCalledWith(events.tile.tag, tile); 
         });
