@@ -12,8 +12,8 @@ describe('After calling tileBuilder.createMine() on a 10x10 Board', function () 
 
         tileBuilder = require("../lib/tileBuilder.js");
         tiles = builder.createEmptyBoard(10, 10);
-        builder.addTilesToBoard(tiles); //Setup Board but do not add mines
-        tiles[5][5] = tileBuilder.createMine(5, 5);
+        builder.addTilesToBoard(tiles, tileBuilder); //Setup Board but do not add mines
+        builder.addMine(tiles, tileBuilder, {column: 5, row: 5});
     });
 
     afterEach(function() {
@@ -21,7 +21,7 @@ describe('After calling tileBuilder.createMine() on a 10x10 Board', function () 
         delete global.amplify;
     });
 
-    it('the call will set the tile to IsMine === true', function() { 
+    it('the call will set the tile to IsMine', function() { 
         expect(tiles[5][5].isMine).toBeDefined();
     });
 
@@ -40,9 +40,13 @@ describe('After calling tileBuilder.createMine() on a 10x10 Board', function () 
         checkTileValue(4, 4, 1);
     });
 
+    it('the tileBuilder will identity the tile as a Mine', function() {
+        expect(tileBuilder.isMine(tiles[5][5])).toBe(true);
+    });
+
     describe('When adding a 2nd mine next to the original on the same row', function () {
         beforeEach(function() {
-            tiles[5][5] = tileBuilder.createMine(4, 5);
+            builder.addMine(tiles, tileBuilder, {column: 4, row: 5});
         });
 
         it('the tiles in the rows directly above and below the two mines will have a value of 2', function() { 
@@ -59,7 +63,8 @@ describe('After calling tileBuilder.createMine() on a 10x10 Board', function () 
     });
 
     function checkTileValue(column, row, value) {
-        if(!tiles[column][row].isBorder && !tiles[column][row].isMine) {
+        var tile = tiles[column][row];
+        if(!tileBuilder.isBorder(tile) && !tileBuilder.isMine(tile)) {
             expect(tiles[column][row].value()).toBe(value);
         }
     };
