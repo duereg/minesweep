@@ -1,4 +1,4 @@
-describe('After calling addMine() on a 10x10 Board', function () {
+describe('After calling tileBuilder.createMine() on a 10x10 Board', function () {
 
     var tiles;
     var ko = require("./fake.ko.js");
