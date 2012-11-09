@@ -8,10 +8,6 @@ footer {
 	margin-top: 20px;
 }
 
-div.container {
-	padding: 20px;
-}
-
 #divControls {
 	padding: 10px;
 }
@@ -28,6 +24,7 @@ input[type="number"] {
 form.navbar-form div.control-group {
 	float: left;
 	margin-right: 20px;
+	margin-bottom: 0px;
 }
 
 table.minesweep {
