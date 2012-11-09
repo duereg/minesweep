@@ -9,16 +9,11 @@ footer {
 }
 
 div.container {
-	border-radius: 5px;
-	border: 2px solid silver;
 	padding: 20px;
-	background-color: white;
 }
 
 #divControls {
-	border-radius: 5px;
-	padding-top: 10px;
-	border: 1px solid navy;
+	padding: 10px;
 }
 
 .center {
@@ -27,10 +22,16 @@ div.container {
 
 input[type="number"] {
 	padding: 0px 6px;
-	height: 26px;
+	height: 30px;
+}
+
+form.navbar-form div.control-group {
+	float: left;
+	margin-right: 20px;
 }
 
 table.minesweep {
+	margin: auto;
 	padding: 0; 
 	border-spacing: 0;
 	border-collapse: collapse;
