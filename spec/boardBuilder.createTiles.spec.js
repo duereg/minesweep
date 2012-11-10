@@ -1,11 +1,11 @@
-describe('When using the builder', function() {
+describe('When using the boardBuilder', function() {
 
 	describe('to create tiles on a 10x10 Board', function() {
-		var builder = require("../lib/builder.js");
+		var boardBuilder = require("../lib/boardBuilder.js");
 		var tiles;
 		
 		beforeEach(function() {
-			tiles = builder.createEmptyBoard(10, 10);
+			tiles = boardBuilder.createEmptyBoard(10, 10);
 		});
 
 		it('the Board will have 12 columns (10 columns + 2 borders)', function() {

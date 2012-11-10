@@ -1,14 +1,14 @@
-describe('After calling newGame() on the builder', function () {
+describe('After calling newGame() on the boardBuilder', function () {
 
-    var builder = require("../lib/builder.js");
-    var tileBuilder = require("./fake.tileBuilder.js");
+    var boardBuilder = require("../lib/boardBuilder.js");
+    var tileFactory = require("./fake.tileFactory.js");
 
     describe('for a board with 10 Mines', function () { 
         var tiles;
         var config = { columns: 10, rows: 10, numMines: 10 }; 
 
         it('ten mines will be present', function () {
-            var tiles = builder.newGame(config, tileBuilder);
+            var tiles = boardBuilder.newGame(config, tileFactory);
             var numMines = 0;
 
             for(var i = 0; i < tiles.length; i++) {

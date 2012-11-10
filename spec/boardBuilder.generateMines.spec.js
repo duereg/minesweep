@@ -1,12 +1,12 @@
-describe('When using the builder and calling generateMines()', function() {
-    var builder = require("../lib/builder.js");
+describe('When using the boardBuilder and calling generateMines()', function() {
+    var boardBuilder = require("../lib/boardBuilder.js");
     var mines = [];
 
     describe('on a 1x1 Board with one mine', function() {
 
         it('the Board will contain 1 mine', function() {
             var newBoard = {columns: 1, rows: 1, numMines: 1}; 
-            mines = builder.generateMines(newBoard);
+            mines = boardBuilder.generateMines(newBoard);
             expect(mines.length).toEqual(1);
         }); 
     });
@@ -15,7 +15,7 @@ describe('When using the builder and calling generateMines()', function() {
 
         it('the Board will contain 10 mines', function() {
             var newBoard = {columns: 10, rows: 10, numMines: 10}; 
-            mines = builder.generateMines(newBoard);
+            mines = boardBuilder.generateMines(newBoard);
             expect(mines.length).toEqual(10);
         }); 
     });
@@ -24,7 +24,7 @@ describe('When using the builder and calling generateMines()', function() {
 
         it('the Board will contain 100 mines', function() {
             var newBoard = {columns: 10, rows: 10, numMines: 100}; 
-            mines = builder.generateMines(newBoard);
+            mines = boardBuilder.generateMines(newBoard);
             expect(mines.length).toEqual(100);
         });
 
@@ -35,7 +35,7 @@ describe('When using the builder and calling generateMines()', function() {
             }
 
             var newBoard = {columns: 10, rows: 10, numMines: 100}; 
-            mines = builder.generateMines(newBoard);
+            mines = boardBuilder.generateMines(newBoard);
 
             for(var j = 0; j < 100; j++) {
                 var initValue = minePositions[mines[j]];

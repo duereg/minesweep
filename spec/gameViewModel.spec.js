@@ -3,7 +3,7 @@ describe('With a GameViewModel', function() {
     var ko = require("./fake.ko.js");
     var amplify = require("./fake.amplify.js");
     var events = require("../lib/events.js");
-    var builder = require("../lib/builder.js"); 
+    var boardBuilder = require("../lib/boardBuilder.js"); 
     var config = {columns: 8, rows: 8, numMines: 10};
     var TileViewModel = null;
     var MineViewModel = null;

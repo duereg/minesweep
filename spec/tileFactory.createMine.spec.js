@@ -1,19 +1,19 @@
-describe('After calling tileBuilder.createMine() on a 10x10 Board', function () {
+describe('After calling tileFactory.createMine() on a 10x10 Board', function () {
 
     var tiles;
     var ko = require("./fake.ko.js");
     var amplify = require("./fake.amplify.js"); 
-    var builder = require("../lib/builder.js");
-    var tileBuilder;
+    var boardBuilder = require("../lib/boardBuilder.js");
+    var tileFactory;
 
     beforeEach(function() {
         global.ko = ko;
         global.amplify = amplify; 
 
-        tileBuilder = require("../lib/tileBuilder.js");
-        tiles = builder.createEmptyBoard(10, 10);
-        builder.addTilesToBoard(tiles, tileBuilder); //Setup Board but do not add mines
-        builder.addMine(tiles, tileBuilder, {column: 5, row: 5});
+        tileFactory = require("../lib/tileFactory.js");
+        tiles = boardBuilder.createEmptyBoard(10, 10);
+        boardBuilder.addTilesToBoard(tiles, tileFactory); //Setup Board but do not add mines
+        boardBuilder.addMine(tiles, tileFactory, {column: 5, row: 5});
     });
 
     afterEach(function() {
@@ -40,13 +40,13 @@ describe('After calling tileBuilder.createMine() on a 10x10 Board', function () 
         checkTileValue(4, 4, 1);
     });
 
-    it('the tileBuilder will identity the tile as a Mine', function() {
-        expect(tileBuilder.isMine(tiles[5][5])).toBe(true);
+    it('the tileFactory will identity the tile as a Mine', function() {
+        expect(tileFactory.isMine(tiles[5][5])).toBe(true);
     });
 
     describe('When adding a 2nd mine next to the original on the same row', function () {
         beforeEach(function() {
-            builder.addMine(tiles, tileBuilder, {column: 4, row: 5});
+            boardBuilder.addMine(tiles, tileFactory, {column: 4, row: 5});
         });
 
         it('the tiles in the rows directly above and below the two mines will have a value of 2', function() { 
@@ -64,7 +64,7 @@ describe('After calling tileBuilder.createMine() on a 10x10 Board', function () 
 
     function checkTileValue(column, row, value) {
         var tile = tiles[column][row];
-        if(!tileBuilder.isBorder(tile) && !tileBuilder.isMine(tile)) {
+        if(!tileFactory.isBorder(tile) && !tileFactory.isMine(tile)) {
             expect(tiles[column][row].value()).toBe(value);
         }
     };

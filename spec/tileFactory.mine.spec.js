@@ -10,7 +10,7 @@ describe('With a tileFactory', function() {
         global.ko = ko;
         global.amplify = amplify; 
         
-        tileFactory = require("../lib/tileBuilder.js");
+        tileFactory = require("../lib/tileFactory.js");
     });
 
     afterEach(function() {
