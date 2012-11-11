@@ -29,7 +29,27 @@ describe('With a GameViewModel', function() {
         delete global.amplify;
     });
 
-    describe("when resetBoard() is called", function() {
+    describe("when calling validateGame()", function() {
+      it("if canValidate() is false, nothing happens", function() {
+
+      });
+
+      describe("if canValidate() is true", function() {
+        it("if all tiles have been uncovered but mines, the game will be a success", function() {
+
+        });
+
+        it("if all the mines have been tagged, the game will be a success", function() {
+
+        });
+
+        it("if tiles were incorrectly tagged as mines, the game will be a failure", function() {
+
+        });
+      });
+    });
+
+    describe("when calling resetBoard()", function() {
       it("if gameIsValid(), then the board.newGame event is raised", function() {
         spyOn(amplify, "publish");
         spyOn(game, 'gameIsValid').andReturn(true); 
@@ -60,7 +80,7 @@ describe('With a GameViewModel', function() {
         it('if the game has failed, showMines() will not be called on the Board.', function() {
            spyOn(global.amplify, "publish");
 
-           game.failure(true)
+           game.failure(true);
            game.cheat();
 
            expect(global.amplify.publish).not.toHaveBeenCalled();
@@ -77,7 +97,7 @@ describe('With a GameViewModel', function() {
         it('if the game has succeeded, showMines() will not be called on the Board.', function() {
            spyOn(global.amplify, "publish");
 
-           game.success(true)
+           game.success(true);
            game.cheat();
 
            expect(global.amplify.publish).not.toHaveBeenCalled();
@@ -98,7 +118,7 @@ describe('With a GameViewModel', function() {
         it('if the game has failed, hideMines() will not be called on the Board.', function() {
            spyOn(global.amplify, "publish");
 
-           game.failure(true)
+           game.failure(true);
            game.uncheat();
 
            expect(global.amplify.publish).not.toHaveBeenCalled();
@@ -116,7 +136,7 @@ describe('With a GameViewModel', function() {
         it('if the game has succeeded, hideMines() will not be called on the Board.', function() {
            spyOn(global.amplify, "publish");
 
-           game.success(true)
+           game.success(true);
            game.uncheat();
 
            expect(global.amplify.publish).not.toHaveBeenCalled();
