@@ -29,6 +29,24 @@ describe('With a GameViewModel', function() {
         delete global.amplify;
     });
 
+    describe("when resetBoard() is called", function() {
+      it("if gameIsValid(), then the board.newGame event is raised", function() {
+        spyOn(amplify, "publish");
+        spyOn(game, 'gameIsValid').andReturn(true); 
+        game.resetBoard();
+        expect(game.gameIsValid).toHaveBeenCalled();
+        expect(amplify.publish).toHaveBeenCalledWith(events.board.newGame, game.columns(), game.rows(), game.numMines());
+      });
+
+      it("if !gameIsValid(), then the board.newGame event is not raised", function() {
+        spyOn(amplify, "publish");
+        spyOn(game, 'gameIsValid').andReturn(false); 
+        game.resetBoard();
+        expect(game.gameIsValid).toHaveBeenCalled();
+        expect(amplify.publish).not.toHaveBeenCalledWith(events.board.newGame, game.columns(), game.rows(), game.numMines());
+      });
+    });
+
     describe('when cheating', function() {  
  
         it('if the game has not failed, showMines() will be called on the Board.', function() {

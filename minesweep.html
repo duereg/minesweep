@@ -139,7 +139,6 @@
 		</div>
 		<script type="text/javascript" src="public/js/knockout-2.1.0.js"></script>
 		<script type="text/javascript" src="public/js/amplify.core.min.js"></script>
-		<script type="text/javascript" src="lib/define.js"></script>
 		<script type="text/javascript" src="lib/require.js"></script>
 		<script type="text/javascript" src="lib/module.js"></script>
 		<script type="text/javascript" src="lib/events.js"></script>
@@ -156,9 +155,9 @@
 			var boardFactory = window.minesweep.boardFactory;
 			var config = { columns: 8, rows: 8, numMines: 10 }; 
 			var boardVm = new window.minesweep.boardViewModel();
+			var game = new window.minesweep.gameViewModel(config, 32, 32);
 
 			boardVm.newGame(config.columns, config.rows, config.numMines);
-			var game = new window.minesweep.gameViewModel(config, boardVm, 32, 32);
 
 			ko.applyBindings(boardVm, document.getElementById('divMinesweepBoard'));  
 			ko.applyBindings(game, document.getElementById('divNavBar'));
