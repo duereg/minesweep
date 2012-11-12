@@ -119,35 +119,20 @@ describe('With a GameViewModel', function() {
 
     describe('when cheating', function() {  
  
-        it('if the game has not failed, showMines() will be called on the Board.', function() {
+        it('if the game is not over, showMines() will be called on the Board.', function() {
            spyOn(global.amplify, "publish");
+           spyOn(game, "gameOver").andReturn(false);
 
            game.cheat();
 
            expect(global.amplify.publish).toHaveBeenCalledWith(events.tile.showMines, true);
         });
 
-        it('if the game has failed, showMines() will not be called on the Board.', function() {
+        it('if the game is over, showMines() will not be called on the Board.', function() {
            spyOn(global.amplify, "publish");
+           spyOn(game, "gameOver").andReturn(true);
 
            game.failure(true);
-           game.cheat();
-
-           expect(global.amplify.publish).not.toHaveBeenCalled();
-        }); 
-
-        it('if the game has not succeeded, showMines() will be called on the Board.', function() {
-           spyOn(global.amplify, "publish");
-
-           game.cheat();
-
-           expect(global.amplify.publish).toHaveBeenCalledWith(events.tile.showMines, true);
-        });
-
-        it('if the game has succeeded, showMines() will not be called on the Board.', function() {
-           spyOn(global.amplify, "publish");
-
-           game.success(true);
            game.cheat();
 
            expect(global.amplify.publish).not.toHaveBeenCalled();
@@ -156,37 +141,20 @@ describe('With a GameViewModel', function() {
 
     describe('when uncheating', function() {  
 
-        it('if the game has not failed, hideMines() will be called on the Board.', function() {
+        it('if the game is not over, hideMines() will be called on the Board.', function() {
            spyOn(global.amplify, "publish");
+           spyOn(game, "gameOver").andReturn(false);
 
            game.uncheat();
 
-           console.log(events.tile.hideMines);
            expect(global.amplify.publish).toHaveBeenCalledWith(events.tile.hideMines);
         });
 
-        it('if the game has failed, hideMines() will not be called on the Board.', function() {
+        it('if the game is over, hideMines() will not be called on the Board.', function() {
            spyOn(global.amplify, "publish");
+           spyOn(game, "gameOver").andReturn(true);
 
            game.failure(true);
-           game.uncheat();
-
-           expect(global.amplify.publish).not.toHaveBeenCalled();
-        });  
-        
-        it('if the game has not succeeded, hideMines() will be called on the Board.', function() {
-           spyOn(global.amplify, "publish");
-
-           game.uncheat();
-
-           console.log(events.tile.hideMines);
-           expect(global.amplify.publish).toHaveBeenCalledWith(events.tile.hideMines);
-        });
-
-        it('if the game has succeeded, hideMines() will not be called on the Board.', function() {
-           spyOn(global.amplify, "publish");
-
-           game.success(true);
            game.uncheat();
 
            expect(global.amplify.publish).not.toHaveBeenCalled();
