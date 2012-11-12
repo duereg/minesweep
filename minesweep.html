@@ -83,7 +83,7 @@
 														event: {contextmenu: tag},
 														style: {	width: sizeInPixels,
 																	height: sizeInPixels,
-																	backgroundSize: sizeInPixels }"  >
+																	backgroundSize: sizeInPixels }" >
 										</div>
 									    <!-- /ko -->
 										<!-- ko if: typeof isValue !== 'undefined' -->
@@ -116,7 +116,7 @@
 					</div>
 				</div>
 			</div> 
-			<div id="divControls" class="row" data-bind="if: !success() && !failure()">
+			<div id="divControls" class="row" data-bind="if: !gameOver()">
 				<div class="span12">
 					<div class="form-horizontal controls">
 						<div class="control-group center"> 
@@ -126,7 +126,7 @@
 				</div>
 			</div>	
 			<!-- <hr> -->
-			<div data-bind="if: success() || failure()" id="ftMessages">
+			<div data-bind="if: gameOver" id="ftMessages">
 				<div class="alert alert-error" data-bind="visible: failure">
 					You did not do so well this time. Maybe next time. 
 					<button class="btn" data-bind="click: newGame, enabled: gameIsValid, css: {'btn-danger': gameIsValid, disabled: !gameIsValid()}">New Game</button>  
