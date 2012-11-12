@@ -44,7 +44,7 @@
 							</div>
 						</div>
 						<div class="control-group">
-							<button class="btn" data-bind="click: resetBoard, enabled: gameIsValid, css: {'btn-primary': gameIsValid, disabled: !gameIsValid()}">New Game</button> 
+							<button class="btn" data-bind="click: newGame, enabled: gameIsValid, css: {'btn-primary': gameIsValid, disabled: !gameIsValid()}">New Game</button> 
 						</div>
 					</form>
 				</div>
@@ -129,11 +129,11 @@
 			<div data-bind="if: success() || failure()" id="ftMessages">
 				<div class="alert alert-error" data-bind="visible: failure">
 					You did not do so well this time. Maybe next time. 
-					<button class="btn" data-bind="click: resetBoard, enabled: gameIsValid, css: {'btn-danger': gameIsValid, disabled: !gameIsValid()}">New Game</button>  
+					<button class="btn" data-bind="click: newGame, enabled: gameIsValid, css: {'btn-danger': gameIsValid, disabled: !gameIsValid()}">New Game</button>  
 				</div>
 				<div class="alert alert-success" data-bind="visible: success">
 					Congratulations! You won! 
-					<button class="btn" data-bind="click: resetBoard, enabled: gameIsValid, css: {'btn-success': gameIsValid, disabled: !gameIsValid()}">New Game</button>   
+					<button class="btn" data-bind="click: newGame, enabled: gameIsValid, css: {'btn-success': gameIsValid, disabled: !gameIsValid()}">New Game</button>   
 				</div>
 			</div>
 		</div>
@@ -153,11 +153,11 @@
 		<script type="text/javascript">
 			//This could be in its own file but I'm leaving it here so the code reviewers have an easy start -->
 			var boardFactory = window.minesweep.boardFactory;
-			var config = { columns: 8, rows: 8, numMines: 10 }; 
+			var config = { columns: 8, rows: 8, numMines: 10, maxRows: 32, maxColumns: 32 }; 
+			var game = new window.minesweep.gameViewModel(config);
 			var boardVm = new window.minesweep.boardViewModel();
-			var game = new window.minesweep.gameViewModel(config, 32, 32);
 
-			boardVm.newGame(config.columns, config.rows, config.numMines);
+			game.newGame();
 
 			ko.applyBindings(boardVm, document.getElementById('divMinesweepBoard'));  
 			ko.applyBindings(game, document.getElementById('divNavBar'));

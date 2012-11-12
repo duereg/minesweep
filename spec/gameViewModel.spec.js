@@ -4,7 +4,7 @@ describe('With a GameViewModel', function() {
     var amplify = require("./fake.amplify.js");
     var events = require("../lib/events.js");
     var boardBuilder = require("../lib/boardBuilder.js"); 
-    var config = {columns: 8, rows: 8, numMines: 10};
+    var config = {columns: 8, rows: 8, numMines: 10, maxColumns: 32, maxRows: 32};
     var TileViewModel = null;
     var MineViewModel = null;
     var testBoardVm = null;
@@ -99,21 +99,21 @@ describe('With a GameViewModel', function() {
       });
     });
 
-    describe("when calling resetBoard()", function() {
+    describe("when calling newGame()", function() {
       it("if gameIsValid(), then the board.newGame event is raised", function() {
         spyOn(amplify, "publish");
         spyOn(game, 'gameIsValid').andReturn(true); 
-        game.resetBoard();
+        game.newGame();
         expect(game.gameIsValid).toHaveBeenCalled();
-        expect(amplify.publish).toHaveBeenCalledWith(events.board.newGame, game.columns(), game.rows(), game.numMines());
+        expect(amplify.publish).toHaveBeenCalledWith(events.board.newGame, config);
       });
 
       it("if !gameIsValid(), then the board.newGame event is not raised", function() {
         spyOn(amplify, "publish");
         spyOn(game, 'gameIsValid').andReturn(false); 
-        game.resetBoard();
+        game.newGame();
         expect(game.gameIsValid).toHaveBeenCalled();
-        expect(amplify.publish).not.toHaveBeenCalledWith(events.board.newGame, game.columns(), game.rows(), game.numMines());
+        expect(amplify.publish).not.toHaveBeenCalledWith(events.board.newGame, config);
       });
     });
 

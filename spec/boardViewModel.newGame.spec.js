@@ -7,6 +7,7 @@ describe('With a BoardViewModel', function() {
     var boardFactory = null; 
     var boardVm = null;
 
+
     beforeEach(function() {
         global.ko = ko;
         global.amplify = amplify;
@@ -24,42 +25,47 @@ describe('With a BoardViewModel', function() {
 
         describe("with a 16x16 board with 10 mines", function() {
 
+            var config = { columns: 16, rows: 16, numMines: 10, maxRows: 32, maxColumns: 32 }; 
+
             it("the tile.destroy & tile.resize events will be raised", function() {
                 spyOn(amplify, "publish");
-                boardVm.newGame(16, 16, 10);
+                boardVm.newGame(config);
                 expect(amplify.publish).toHaveBeenCalledWith(events.tile.destroy);
             });
 
             it("the tile.resize event will be raised, with tile size 32", function() {
                 spyOn(amplify, "publish");
-                boardVm.newGame(16, 16, 10);
+                boardVm.newGame(config);
                 expect(amplify.publish).toHaveBeenCalledWith(events.tile.resize, 32);
             });
         });
 
         describe("with a 10x10 board with 10 mines", function() {
 
+            var config = { columns: 10, rows: 10, numMines: 10, maxRows: 32, maxColumns: 32 }; 
+
             it('10 mines positions will be recorded.', function() {
-                boardVm.newGame(10, 10, 10);
+                boardVm.newGame(config);
                 expect(boardVm.minePositions.length).toEqual(10);
             });
 
             it('a 12x12 tile array will be created.', function() {
-                boardVm.newGame(10, 10, 10);
+                boardVm.newGame(config);
                 expect(boardVm.tiles().length).toEqual(12);
                 expect(boardVm.tiles()[0].length).toEqual(12);
             });
         });
 
-
         describe("with a 1x1 board with 1 mine", function() {
+            var config = { columns: 1, rows: 1, numMines: 1, maxRows: 32, maxColumns: 32 }; 
+
             it('1 mine position will be recorded.', function() {
-                boardVm.newGame(1, 1, 1);
+                boardVm.newGame(config);
                 expect(boardVm.minePositions.length).toEqual(1);
             });
 
             it('a 3x3 tile array will be created.', function() {
-                boardVm.newGame(1, 1, 1);
+                boardVm.newGame(config);
                 expect(boardVm.tiles().length).toEqual(3);
                 expect(boardVm.tiles()[0].length).toEqual(3);
             });
@@ -72,7 +78,9 @@ describe('With a BoardViewModel', function() {
         });
 
         it('with a board of size 16x16 with 50 mines, 50 mines positions will be recorded.', function() {
-            boardVm.newGame(16, 16, 50);
+            var config = { columns: 50, rows: 50, numMines: 50, maxRows: 32, maxColumns: 32 }; 
+
+            boardVm.newGame(config);
             expect(boardVm.minePositions.length).toEqual(50);
         });
     });
