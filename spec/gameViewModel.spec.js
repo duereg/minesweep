@@ -31,20 +31,70 @@ describe('With a GameViewModel', function() {
 
     describe("when calling validateGame()", function() {
       it("if canValidate() is false, nothing happens", function() {
-
+        spyOn(game, "canValidate").andReturn(false);
+        spyOn(amplify, "publish");
+        game.validateGame();
+        expect(game.canValidate).toHaveBeenCalled();
+        expect(amplify.publish).not.toHaveBeenCalled();
       });
 
       describe("if canValidate() is true", function() {
         it("if all tiles have been uncovered but mines, the game will be a success", function() {
+          spyOn(game, "canValidate").andReturn(true);
+          spyOn(game, "allTagsUsed").andReturn(false);
+          spyOn(game, "success");
+          spyOn(game, "failure"); 
+          
+          game.validateGame();
 
+          expect(game.canValidate).toHaveBeenCalled();
+          expect(game.allTagsUsed).toHaveBeenCalled();
+          expect(game.success).toHaveBeenCalledWith(true);
+          expect(game.failure).toHaveBeenCalledWith(false);
         });
 
-        it("if all the mines have been tagged, the game will be a success", function() {
+        it("if all the mines have been tagged, but not all the tiles have been uncovered, the game will be a success", function() {
+          spyOn(game, "canValidate").andReturn(true);
+          spyOn(game, "allTagsUsed").andReturn(true);
 
+          spyOn(game, "minesTagged").andReturn(10);
+          spyOn(game, "tilesCovered").andReturn(64);
+          spyOn(game, "allMinesTagged").andReturn(true);
+
+          spyOn(game, "success");
+          spyOn(game, "failure"); 
+          
+          game.validateGame();
+
+          expect(game.canValidate).toHaveBeenCalled();
+          expect(game.allTagsUsed).toHaveBeenCalled();
+          expect(game.minesTagged).toHaveBeenCalled();
+          expect(game.tilesCovered).toHaveBeenCalled();
+          expect(game.allMinesTagged).toHaveBeenCalled();
+          expect(game.success).toHaveBeenCalledWith(true);
+          expect(game.failure).toHaveBeenCalledWith(false);
         });
 
         it("if tiles were incorrectly tagged as mines, the game will be a failure", function() {
+          spyOn(game, "canValidate").andReturn(true);
+          spyOn(game, "allTagsUsed").andReturn(true);
 
+          spyOn(game, "minesTagged").andReturn(10);
+          spyOn(game, "tilesCovered").andReturn(64);
+          spyOn(game, "allMinesTagged").andReturn(false);
+
+          spyOn(game, "success");
+          spyOn(game, "failure"); 
+          
+          game.validateGame();
+
+          expect(game.canValidate).toHaveBeenCalled();
+          expect(game.allTagsUsed).toHaveBeenCalled();
+          expect(game.minesTagged).toHaveBeenCalled();
+          expect(game.tilesCovered).toHaveBeenCalled();
+          expect(game.allMinesTagged).toHaveBeenCalled();
+          expect(game.success).toHaveBeenCalledWith(false);
+          expect(game.failure).toHaveBeenCalledWith(true);
         });
       });
     });
