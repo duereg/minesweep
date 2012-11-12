@@ -63,9 +63,9 @@ describe('After calling tileFactory.createMine() on a 10x10 Board', function () 
     });
 
     function checkTileValue(column, row, value) {
-        var tile = tiles[column][row];
+        var tile = tiles[row][column];
         if(!tileFactory.isBorder(tile) && !tileFactory.isMine(tile)) {
-            expect(tiles[column][row].value()).toBe(value);
+            expect(tiles[row][column].value()).toBe(value);
         }
     };
 }); 

@@ -27,13 +27,13 @@
 						 </div>
 					  <div class="control-group" data-bind="css: {error: tooFewColumns() || tooManyColumns() }">
 					  	<div class="input-prepend controls">
-								<span class="add-on" ># Rows</span>
+								<span class="add-on" ># Columns</span>
 								<input id="txtColumns" name="txtColumns" type="number" class="input-small" data-bind="value: columns, attr: {max: maxColumns}" min="2">
 							</div>
 					  </div>
 						<div class="control-group" data-bind="css: {error: tooFewRows() || tooManyRows()}">
 						  <div class="input-prepend controls">
-								<span class="add-on" ># Columns</span>
+								<span class="add-on" ># Rows</span>
 								<input id="txtRows" name="txtRows" type="number" class="input-small" data-bind="value: rows, attr: {max: maxRows}" min="2">
 							</div>
 						</div>
@@ -54,12 +54,12 @@
 			<div class="row">
 				<div id="divFormValidation" class="span12">
 						<div class="alert alert-error" data-bind="visible: tooFewColumns() || tooManyColumns() ">
-							<span data-bind="visible: tooFewColumns">You need at least two rows.</span>
-							<span data-bind="visible: tooManyColumns">You can have no more than <span data-bind="text: maxColumns"></span> rows.</span>
+							<span data-bind="visible: tooFewColumns">You need at least two columns.</span>
+							<span data-bind="visible: tooManyColumns">You can have no more than <span data-bind="text: maxColumns"></span> columns.</span>
 						</div>
 						<div class="alert alert-error" data-bind="visible: tooFewRows() || tooManyRows()">
-							<span data-bind="visible: tooFewRows">You need at least two columns.</span>
-							<span data-bind="visible: tooManyRows">You can have no more than <span data-bind="text: maxRows"></span> columns.</span>
+							<span data-bind="visible: tooFewRows">You need at least two rows.</span>
+							<span data-bind="visible: tooManyRows">You can have no more than <span data-bind="text: maxRows"></span> rows.</span>
 						</div>
 						<div class="alert alert-error" data-bind="visible: tooManyMines() || tooFewMines()">
 							<span data-bind="visible: tooManyMines">You have more mines than tiles.</span>
