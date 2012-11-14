@@ -67,5 +67,5 @@ describe('After calling tileFactory.createMine() on a 10x10 Board', function () 
         if(!tileFactory.isBorder(tile) && !tileFactory.isMine(tile)) {
             expect(tiles[row][column].value()).toBe(value);
         }
-    };
+    }
 }); 
