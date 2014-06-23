@@ -1,0 +1,19 @@
+{
+  "name": "minesweep",
+  "version": "0.0.0",
+  "description": "Minesweeper game",
+  "main": "minesweep.html",
+  "scripts": {
+    "test": "jasmine-node spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/duereg/minesweep.git"
+  },
+  "author": "Matt Blair",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/duereg/minesweep/issues"
+  },
+  "homepage": "http://mine-express.herokuapp.com/"
+}
