@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/duereg/minesweep/issues"
   },
-  "homepage": "http://mine-express.herokuapp.com/"
+  "homepage": "http://mine-express.herokuapp.com/",
+  "devDependencies": {
+    "jasmine-node": "^1.14.3"
+  }
 }
