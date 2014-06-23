@@ -1,5 +1,5 @@
 module.exports = {
-    subscribe: function() {},
-    publish: function() {},
-    unsubscribe: function() {}
+  subscribe: function () {},
+  publish: function () {},
+  unsubscribe: function () {}
 };
