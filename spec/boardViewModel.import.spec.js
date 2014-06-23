@@ -8,7 +8,7 @@ describe('With a BoardViewModel', function () {
     global.ko = ko;
     global.amplify = amplify;
     boardFactory = require("../lib/boardFactory.js")
-    var BoardViewModel = require("../lib/BoardViewModel.js");
+    var BoardViewModel = require("../lib/boardViewModel.js");
     boardVm = new BoardViewModel();
   });
 
